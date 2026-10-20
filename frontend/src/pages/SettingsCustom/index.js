@@ -29,8 +29,12 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
   },
   mainPaper: {
+    minHeight: 0,
+    minWidth: 0,
+    border: `1px solid ${theme.palette.divider}`,
+    boxShadow: "none",
     ...theme.scrollbarStyles,
-    overflowY: "scroll",
+    overflowY: "auto",
     flex: 1,
   },
   tab: {
@@ -39,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     ...theme.scrollbarStyles,
-    overflowY: "scroll",
+    overflowY: "auto",
     padding: theme.spacing(2),
     display: "flex",
     alignItems: "center",

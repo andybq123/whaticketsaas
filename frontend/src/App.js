@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 
 import "react-toastify/dist/ReactToastify.css";
 import { QueryClient, QueryClientProvider } from "react-query";
-import lightBackground from '../src/assets/wa-background-light.png';
-import darkBackground from '../src/assets/wa-background-dark.jpg';
 import { ptBR } from "@material-ui/core/locale";
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import { useMediaQuery } from "@material-ui/core";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import { createTheme as createMuiTheme, ThemeProvider as MuiThemeProvider } from "@mui/material/styles";
+import { createChatizyOptions } from "./theme/chatizy";
 import ColorModeContext from "./layout/themeContext";
 import { SocketContext, SocketManager } from './context/Socket/SocketContext';
 
@@ -30,69 +31,9 @@ const App = () => {
         []
     );
 
-    const theme = createTheme(
-        {
-            scrollbarStyles: {
-                "&::-webkit-scrollbar": {
-                    width: '8px',
-                    height: '8px',
-					borderRadius: "8px",
-                },
-                "&::-webkit-scrollbar-thumb": {
-                    boxShadow: 'inset 0 0 6px rgba(0, 0, 0, 0.3)',
-                    backgroundColor: "#FF9100",
-					borderRadius: "8px",
-                },
-            },
-            scrollbarStylesSoft: {
-                "&::-webkit-scrollbar": {
-                    width: "8px",
-					borderRadius: "8px",
-                },
-                "&::-webkit-scrollbar-thumb": {
-                    backgroundColor: mode === "light" ? "#F3F3F3" : "#333333",
-					borderRadius: "8px",
-                },
-            },
-            palette: {
-                type: mode,
-                primary: { main: mode === "light" ? "#FF9100" : "#FFFFFF" },
-                quicktags: { main: mode === "light" ? "#FF9100" : "#FF9100" },
-				sair: { main: mode === "light" ? "#FF9100" : "#333" },
-				vcard: { main: mode === "light" ? "#FF9100" : "#666" },
-                textPrimary: mode === "light" ? "#FF9100" : "#FFFFFF",
-                borderPrimary: mode === "light" ? "#FF9100" : "#FFFFFF",
-                dark: { main: mode === "light" ? "#333333" : "#F3F3F3" },
-                light: { main: mode === "light" ? "#F3F3F3" : "#333333" },
-                tabHeaderBackground: mode === "light" ? "#EEE" : "#666",
-                ticketlist: mode === "light" ? "#fafafa" : "#333",
-                optionsBackground: mode === "light" ? "#fafafa" : "#333",
-				options: mode === "light" ? "#fafafa" : "#666",
-				fontecor: mode === "light" ? "#128c7e" : "#fff",
-                fancyBackground: mode === "light" ? "#fafafa" : "#333",
-				bordabox: mode === "light" ? "#eee" : "#333",
-				newmessagebox: mode === "light" ? "#eee" : "#333",
-				inputdigita: mode === "light" ? "#fff" : "#666",
-				contactdrawer: mode === "light" ? "#fff" : "#666",
-				announcements: mode === "light" ? "#ededed" : "#333",
-				login: mode === "light" ? "#fff" : "#1C1C1C",
-				announcementspopover: mode === "light" ? "#fff" : "#666",
-				chatlist: mode === "light" ? "#eee" : "#666",
-				boxlist: mode === "light" ? "#ededed" : "#666",
-				boxchatlist: mode === "light" ? "#ededed" : "#333",
-                total: mode === "light" ? "#fff" : "#222",
-                messageIcons: mode === "light" ? "grey" : "#F3F3F3",
-                inputBackground: mode === "light" ? "#FFFFFF" : "#333",
-                barraSuperior: mode === "light" ? "linear-gradient(to right, #FF9100, #FF9100 , #FF9100)" : "#666",
-				boxticket: mode === "light" ? "#EEE" : "#666",
-				campaigntab: mode === "light" ? "#ededed" : "#666",
-				mediainput: mode === "light" ? "#ededed" : "#1c1c1c",
-				contadordash: mode == "light" ? "#fff" : "#fff",
-            },
-            mode,
-        },
-        locale
-    );
+    const options = React.useMemo(() => createChatizyOptions(mode), [mode]);
+    const theme = React.useMemo(() => createTheme(options, locale), [options, locale]);
+    const muiTheme = React.useMemo(() => createMuiTheme(options), [options]);
 
     useEffect(() => {
         const i18nlocale = localStorage.getItem("i18nextLng");
@@ -113,11 +54,14 @@ const App = () => {
     return (
         <ColorModeContext.Provider value={{ colorMode }}>
             <ThemeProvider theme={theme}>
+                <MuiThemeProvider theme={muiTheme}>
+                <CssBaseline />
                 <QueryClientProvider client={queryClient}>
                   <SocketContext.Provider value={SocketManager}>
                       <Routes />
                   </SocketContext.Provider>
                 </QueryClientProvider>
+                </MuiThemeProvider>
             </ThemeProvider>
         </ColorModeContext.Provider>
     );

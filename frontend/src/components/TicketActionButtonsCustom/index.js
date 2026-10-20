@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 
-import { makeStyles, createTheme, ThemeProvider } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import { IconButton } from "@material-ui/core";
 import { MoreVert, Replay, Search } from "@material-ui/icons";
 
@@ -15,12 +15,12 @@ import { TicketsContext } from "../../context/Tickets/TicketsContext";
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import UndoRoundedIcon from '@material-ui/icons/UndoRounded';
 import Tooltip from '@material-ui/core/Tooltip';
-import { green } from '@material-ui/core/colors';
 import TicketAlreadyOpenModal from "../TicketAlreadyOpenModal";
 
 
 const useStyles = makeStyles(theme => ({
-	actionButtons: {
+	resolve: { color: theme.palette.success.main },
+    actionButtons: {
 		marginRight: 6,
 		flex: "none",
 		alignSelf: "center",
@@ -41,12 +41,6 @@ const TicketActionButtonsCustom = ({ ticket, onSearchToggle }) => {
 	const ticketOptionsMenuOpen = Boolean(anchorEl);
 	const { user } = useContext(AuthContext);
 	const { setCurrentTicket } = useContext(TicketsContext);
-
-	const customTheme = createTheme({
-		palette: {
-		  	primary: green,
-		}
-	});
 
 	const handleOpenTicketOptionsMenu = e => {
 		setAnchorEl(e.currentTarget);
@@ -117,13 +111,13 @@ const TicketActionButtonsCustom = ({ ticket, onSearchToggle }) => {
 							<UndoRoundedIcon />
 						</IconButton>
 					</Tooltip>
-					<ThemeProvider theme={customTheme}>
+					
 						<Tooltip title={i18n.t("messagesList.header.buttons.resolve")}>
-							<IconButton onClick={e => handleUpdateTicketStatus(e, "closed", user?.id)} color="primary">
+							<IconButton onClick={e => handleUpdateTicketStatus(e, "closed", user?.id)} className={classes.resolve}>
 								<CheckCircleIcon />
 							</IconButton>
 						</Tooltip>
-					</ThemeProvider>
+					
 					{/* <ButtonWithSpinner
 						loading={loading}
 						startIcon={<Replay />}

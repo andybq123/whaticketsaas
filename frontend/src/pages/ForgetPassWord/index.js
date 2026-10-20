@@ -1,3 +1,4 @@
+import chatizyLogo from "../../assets/logo.png";
 import React, { useState, useEffect } from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
@@ -26,24 +27,9 @@ const useStyles = makeStyles((theme) => ({
 		display: "flex",
 		alignItems: "center",
 		justifyContent: "center",
-		background:
-			theme.palette.type === "dark"
-				? "linear-gradient(135deg, #121212 0%, #1e1e1e 100%)"
-				: "linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)",
+		background: theme.palette.background.default,
 		position: "relative",
 		overflow: "hidden",
-		"&::before": {
-			content: '""',
-			position: "absolute",
-			top: 0,
-			left: 0,
-			right: 0,
-			height: "50vh",
-			background: theme.palette.primary.dark,
-			borderBottomLeftRadius: "50% 20%",
-			borderBottomRightRadius: "50% 20%",
-			zIndex: 0,
-		},
 	},
 	container: {
 		position: "relative",
@@ -54,37 +40,37 @@ const useStyles = makeStyles((theme) => ({
 	},
 	card: {
 		padding: theme.spacing(4, 3),
-		borderRadius: 16,
+		borderRadius: 8,
 		boxShadow: theme.shadows[4],
 		background: theme.palette.background.paper,
 		textAlign: "center",
 		transition: "transform 0.3s, box-shadow 0.3s",
 		"&:hover": {
-			transform: "translateY(-5px)",
+			transform: "none",
 			boxShadow: theme.shadows[6],
 		},
 	},
 	logoContainer: {
 		width: 100,
 		height: 100,
-		margin: "0 auto -50px",
+		margin: "0 auto 16px",
 		borderRadius: "50%",
-		background: theme.palette.primary.dark,
+		background: theme.palette.background.paper,
 		display: "flex",
 		alignItems: "center",
 		justifyContent: "center",
 		boxShadow: theme.shadows[4],
-		border: "4px solid " + (theme.palette.type === "dark" ? theme.palette.grey[900] : "white"),
+		border: `1px solid ${theme.palette.divider}`,
 		position: "relative",
 		zIndex: 2,
 		"& img": {
 			width: "70%",
 			height: "auto",
-			filter: 'brightness(0) invert(1)',
+			objectFit: "contain",
 		},
 	},
 	formTitle: {
-		margin: theme.spacing(5, 0, 3),
+		margin: theme.spacing(2, 0, 3),
 		color: theme.palette.text.primary,
 		fontWeight: 700,
 	},
@@ -121,7 +107,7 @@ const useStyles = makeStyles((theme) => ({
 		borderRadius: 8,
 		fontWeight: 600,
 		fontSize: "1rem",
-		letterSpacing: 0.5,
+		letterSpacing: 0,
 		textTransform: "none",
 		boxShadow: "none",
 		transition: "all 0.2s",
@@ -232,7 +218,7 @@ const ForgetPassword = () => {
 		<div className={classes.root}>
 			<div className={classes.container}>
 				<div className={classes.logoContainer}>
-					<img src={logo} alt="Logo" />
+					<img src={logo} alt="Chatizy" onError={(event) => { event.currentTarget.onerror = null; event.currentTarget.src = chatizyLogo; }} />
 				</div>
 				<div className={classes.card}>
 					<Typography variant="h5" className={classes.formTitle}>

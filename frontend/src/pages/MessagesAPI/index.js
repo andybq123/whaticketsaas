@@ -14,6 +14,10 @@ import usePlans from "../../hooks/usePlans";
 
 const useStyles = makeStyles((theme) => ({
   mainPaper: {
+    minHeight: 0,
+    minWidth: 0,
+    border: `1px solid ${theme.palette.divider}`,
+    boxShadow: "none",
     flex: 1,
     padding: theme.spacing(2),
     paddingBottom: 100

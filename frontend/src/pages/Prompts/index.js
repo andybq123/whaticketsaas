@@ -33,9 +33,13 @@ import { SocketContext } from "../../context/Socket/SocketContext";
 
 const useStyles = makeStyles((theme) => ({
   mainPaper: {
+    minHeight: 0,
+    minWidth: 0,
+    border: `1px solid ${theme.palette.divider}`,
+    boxShadow: "none",
     flex: 1,
     padding: theme.spacing(1),
-    overflowY: "scroll",
+    overflowY: "auto",
     ...theme.scrollbarStyles,
   },
   customTableCell: {
@@ -45,7 +49,8 @@ const useStyles = makeStyles((theme) => ({
   },
   // Adicione um estilo para a box vermelha
   redBox: {
-    backgroundColor: "#ffcccc", // Definindo a cor de fundo vermelha
+    backgroundColor: theme.palette.action.selected,
+    color: theme.palette.text.primary, // Definindo a cor de fundo vermelha
     padding: theme.spacing(2), // Adicionando um espaçamento interno
     marginBottom: theme.spacing(2), // Adicionando margem inferior para separar do conteúdo abaixo
   },

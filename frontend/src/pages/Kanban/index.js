@@ -25,8 +25,8 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     padding: theme.spacing(2),
     height: "calc(100vh - 64px)",
-    backgroundColor: "#f5f7fa",
-    fontFamily: "'Roboto', sans-serif",
+    backgroundColor: theme.palette.background.default,
+    fontFamily: theme.typography.fontFamily,
     overflow: "hidden",
     [theme.breakpoints.down('sm')]: {
       height: "auto",
@@ -40,7 +40,8 @@ const useStyles = makeStyles(theme => ({
       minHeight: "60vh",
     },
     "& .react-trello-lane": {
-      backgroundColor: "white",
+      backgroundColor: theme.palette.background.paper,
+      color: theme.palette.text.primary,
       borderRadius: "8px",
       boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
       margin: "0 8px",
@@ -65,7 +66,7 @@ const useStyles = makeStyles(theme => ({
     "& .react-trello-card-title": {
       fontSize: "14px",
       fontWeight: "500",
-      color: "#333",
+      color: theme.palette.text.primary,
     },
     "& .react-trello-lane-header": {
       padding: "12px 16px",

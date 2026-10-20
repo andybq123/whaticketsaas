@@ -79,8 +79,10 @@ const useStyles = makeStyles((theme) => ({
     flex: 1,
     backgroundColor: theme.palette.background.default,
     display: 'flex',
-    borderRadius: 40,
-    padding: 4,
+    borderRadius: 8,
+    padding: 8,
+    minWidth: 0,
+    border: `1px solid ${theme.palette.divider}`,
     marginRight: theme.spacing(1),
   },
 
@@ -94,16 +96,17 @@ const useStyles = makeStyles((theme) => ({
   searchInput: {
     flex: 1,
     border: 'none',
-    borderRadius: 25,
+    borderRadius: 8,
     outline: 'none',
+    minWidth: 0,
   },
 
   snackbar: {
     display: "flex",
     justifyContent: "space-between",
     backgroundColor: theme.palette.secondary.main,
-    color: "white",
-    borderRadius: 30,
+    color: theme.palette.secondary.contrastText,
+    borderRadius: 8,
     [theme.breakpoints.down("sm")]: {
       fontSize: "0.8em",
     },
@@ -113,31 +116,31 @@ const useStyles = makeStyles((theme) => ({
   },
 
   yesButton: {
-    backgroundColor: "#FFF",
-    color: "rgba(0, 100, 0, 1)",
+    backgroundColor: theme.palette.background.paper,
+    color: theme.palette.success.main,
     padding: "4px 4px",
     fontSize: "1em",
     fontWeight: "bold",
     textTransform: "uppercase",
     marginRight: theme.spacing(1),
     "&:hover": {
-      backgroundColor: "darkGreen",
-      color: "#FFF",
+      backgroundColor: theme.palette.success.main,
+      color: theme.palette.primary.contrastText,
     },
-    borderRadius: 30,
+    borderRadius: 8,
   },
   noButton: {
-    backgroundColor: "#FFF",
-    color: "rgba(139, 0, 0, 1)",
+    backgroundColor: theme.palette.background.paper,
+    color: theme.palette.error.main,
     padding: "4px 4px",
     fontSize: "1em",
     fontWeight: "bold",
     textTransform: "uppercase",
     "&:hover": {
-      backgroundColor: "darkRed",
-      color: "#FFF",
+      backgroundColor: theme.palette.error.main,
+      color: theme.palette.primary.contrastText,
     },
-    borderRadius: 30,
+    borderRadius: 8,
   },
 
   badge: {

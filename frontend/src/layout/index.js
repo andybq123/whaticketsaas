@@ -38,7 +38,7 @@ import Brightness4Icon from '@material-ui/icons/Brightness4';
 import Brightness7Icon from '@material-ui/icons/Brightness7';
 import usePlans from "../hooks/usePlans";
 
-const drawerWidth = 300;
+const drawerWidth = 264;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -47,13 +47,6 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "100vh",
     backgroundColor: theme.palette.fancyBackground,
-    '& .MuiButton-outlinedPrimary': {
-      color: theme.mode === 'light' ? '#FFF' : '#FFF',
-      backgroundColor: theme.mode === 'light' ? '#FF9100' : '#1c1c1c',
-    },
-    '& .MuiTab-textColorPrimary.Mui-selected': {
-      color: theme.mode === 'light' ? '#FF9100' : '#FFF',
-    }
   },
   avatar: {
     width: "100%",
@@ -72,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
     gap: theme.spacing(1.5),
   },
   companyName: {
-    color: 'white',
+    color: theme.palette.text.primary,
     fontSize: '1rem',
     fontWeight: 500,
     whiteSpace: 'nowrap',
@@ -97,9 +90,9 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "space-between",
     padding: "0 8px",
-    minHeight: "48px",
+    minHeight: "56px",
     [theme.breakpoints.down("sm")]: {
-      height: "48px"
+      height: "56px"
     }
   },
   appBar: {
@@ -109,7 +102,8 @@ const useStyles = makeStyles((theme) => ({
     right: 0,
     width: "100%",
     zIndex: theme.zIndex.drawer + 100,
-    boxShadow: '0 1px 8px rgba(0,0,0,.3)',
+    boxShadow: 'none',
+    borderBottom: `1px solid ${theme.palette.divider}`,
   },
   menuButton: {
     marginRight: theme.spacing(1),
@@ -122,7 +116,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   menuIcon: {
-    color: "#ffffff",
+    color: theme.palette.text.primary,
     transition: "opacity 0.3s ease, transform 0.3s ease",
   },
   menuButtonHidden: {
@@ -131,7 +125,7 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
     fontSize: 14,
-    color: "white",
+    color: theme.palette.text.primary,
   },
   drawerPaper: {
     position: "fixed",
@@ -153,9 +147,11 @@ const useStyles = makeStyles((theme) => ({
       top: 56,
       height: "calc(100vh - 56px)",
       bottom: 0,
-      width: "280px",
+      width: drawerWidth,
       maxWidth: "80vw",
     },
+    borderRight: `1px solid ${theme.palette.divider}`,
+    backgroundColor: theme.palette.background.paper,
     ...theme.scrollbarStylesSoft
   },
   drawerPaperClose: {
@@ -469,7 +465,8 @@ const LoggedInLayout = ({ children }) => {
             edge="start"
             className={classes.menuButton}
             color="inherit"
-            aria-label="open drawer"
+            aria-label={drawerOpen ? "Recolher menu" : "Abrir menu"}
+            title={drawerOpen ? "Recolher menu" : "Abrir menu"}
             onClick={() => setDrawerOpen(!drawerOpen)}
           >
             {drawerOpen ? (
@@ -484,9 +481,9 @@ const LoggedInLayout = ({ children }) => {
             <div className={classes.branding}>
               <img
                 key={finalLogoUrl}
-                src={`${finalLogoUrl}?r=${Math.random()}`}
+                src={finalLogoUrl}
                 className={classes.logo}
-                alt={`${process.env.REACT_APP_NAME_SYSTEM} Logo`}
+                alt="Chatizy"
                 onError={handleLogoError}
                 onClick={() => window.location.href = '/'}
               />
@@ -515,12 +512,13 @@ const LoggedInLayout = ({ children }) => {
 
           <div>
             <IconButton
-              aria-label="account of current user"
+              aria-label="Minha conta"
+              title="Minha conta"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleMenu}
               variant="contained"
-              style={{ color: "white" }}
+              color="inherit"
             >
               <AccountCircle />
             </IconButton>

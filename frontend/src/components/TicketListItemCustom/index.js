@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
   },
   pendingTicket: {
     cursor: "unset",
-    backgroundColor: theme.palette.ticketlist.main,
+    backgroundColor: theme.palette.ticketlist,
   },
   selectedTicket: {
     backgroundColor: theme.palette.action.selected,
@@ -75,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "700",
     color: "#fff",
     textShadow: "0 1px 3px rgba(0,0,0,0.5)",
-    letterSpacing: "0.5px",
+    letterSpacing: 0,
     whiteSpace: "nowrap",
     textTransform: "uppercase",
   },
@@ -211,7 +211,7 @@ const useStyles = makeStyles((theme) => ({
     color: blue[600],
   },
   queueCircle: {
-    backgroundColor: grey[100],
+    backgroundColor: theme.palette.action.hover,
     color: grey[600],
   },
   tagIcon: {
@@ -259,7 +259,7 @@ const useStyles = makeStyles((theme) => ({
     color: blue[600],
   },
   queueBadge: {
-    backgroundColor: grey[100],
+    backgroundColor: theme.palette.action.hover,
     color: grey[600],
   },
   presenceIndicator: {
@@ -321,7 +321,7 @@ const useStyles = makeStyles((theme) => ({
   tagContainer: {
     display: "flex",
     alignItems: "center",
-    backgroundColor: grey[100],
+    backgroundColor: theme.palette.action.hover,
     borderRadius: "6px",
     padding: "4px 8px",
     marginTop: "4px",
@@ -331,7 +331,7 @@ const useStyles = makeStyles((theme) => ({
   tagLabel: {
     fontSize: "0.75rem",
     fontWeight: "bold",
-    color: grey[700],
+    color: theme.palette.text.secondary,
     whiteSpace: "nowrap",
   },
   tagList: {
