@@ -54,23 +54,6 @@ const Login = () => {
         <div className={"container-img"}>
           <ChatizyBrand size="large" />
         </div>
-        <div className="container-footer">
-          <p>
-            Copyright ©{" "}
-            <span>Chatizy</span>{" "}
-            {new Date().getFullYear()}{" "}
-          </p>
-          <p>
-            {" "}
-            <a href={"https://policies.google.com/privacy"} target={"_blank"} rel="noopener noreferrer">
-              Politica de Privacidade
-            </a>{" "}
-            &{" "}
-            <a href={"https://policies.google.com/terms"} target={"_blank"} rel="noopener noreferrer">
-              Termos de Serviço
-            </a>
-          </p>
-        </div>
       </div>
       <div className={"container-right"}>
         <div className={"box"}>
@@ -159,6 +142,14 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <footer className="container-footer">
+        <p>Copyright © Chatizy {new Date().getFullYear()}</p>
+        <p>
+          <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Política de Privacidade</a>
+          {" & "}
+          <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer">Termos de Serviço</a>
+        </p>
+      </footer>
     </div>
   );
 };

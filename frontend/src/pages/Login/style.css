@@ -1,16 +1,17 @@
 /* Login-only styles. Never reset global application elements here. */
 .geral {
-  width: 100%; min-height: 100vh; display: flex; flex-direction: column;
-  align-items: center; justify-content: center; gap: 32px;
+  width: 100%; min-height: 100vh; min-height: 100dvh; display: grid;
+  grid-template-rows: 1fr auto auto 1fr auto; justify-items: center; gap: 32px;
   padding: 32px 20px; color: var(--chatizy-text);
   background: var(--chatizy-background);
 }
-.geral .container-login { width: 100%; display: flex; align-items: center; flex-direction: column; }
+.geral .container-login { grid-row: 2; width: 100%; display: flex; align-items: center; flex-direction: column; }
 .geral .container-img { display: flex; justify-content: center; width: 100%; }
 .geral .img-login { width: 200px; max-width: 70vw; height: auto; object-fit: contain; }
-.geral .container-footer { order: 2; padding: 12px; text-align: center; font-size: 12px; line-height: 1.8; color: var(--chatizy-muted); }
+.geral .container-footer { grid-row: 5; padding: 0 12px; text-align: center; font-size: 12px; line-height: 1.8; color: var(--chatizy-muted); }
+.geral .container-footer p { margin: 0; }
 .geral .container-footer a { color: inherit; }
-.geral .container-right { width: 100%; max-width: 460px; }
+.geral .container-right { grid-row: 3; width: 100%; max-width: 460px; }
 .geral .box { background: var(--chatizy-surface); border: 1px solid var(--chatizy-border); border-radius: var(--chatizy-radius); padding: 36px; box-shadow: var(--chatizy-shadow); }
 .geral .container-header-box { display: flex; gap: 32px; align-items: center; border-bottom: 1px solid var(--chatizy-border); margin-bottom: 24px; }
 .geral .link-create-count, .geral .link-enter { padding: 0 0 14px; text-decoration: none; font-size: 16px; font-weight: 600; color: var(--chatizy-muted); }
@@ -20,3 +21,4 @@
 .geral .termo, .geral .politica { color: var(--chatizy-link); text-decoration: none; }
 .geral a:hover { text-decoration: underline; }
 @media (max-width: 480px) { .geral { padding: 24px 16px; gap: 20px; } .geral .box { padding: 24px 20px; } }
+@media (max-height: 750px) { .geral { padding-top: 20px; padding-bottom: 20px; gap: 12px; } }
