@@ -148,12 +148,27 @@ const wbotMonitor = async (
       }
     });
 
-    wbot.ev.on("contacts.upsert", async (contacts: BContact[]) => {
+    const saveContacts = async (contacts: Partial<BContact>[], origin: string) => {
+      if (!contacts || !contacts.length) return;
+      try {
+        await createOrUpdateBaileysService({ whatsappId: whatsapp.id, contacts });
+      } catch (error) {
+        Sentry.captureException(error);
+        logger.error({ error }, `Erro ao salvar contatos (${origin})`);
+      }
+    };
 
-      await createOrUpdateBaileysService({
-        whatsappId: whatsapp.id,
-        contacts,
-      });
+    wbot.ev.on("contacts.upsert", async (contacts: BContact[]) => {
+      await saveContacts(contacts, "contacts.upsert");
+    });
+
+    wbot.ev.on("contacts.update", async (contacts: Partial<BContact>[]) => {
+      await saveContacts(contacts, "contacts.update");
+    });
+
+    // Nas versões atuais do WhatsApp a agenda chega junto com a sincronização do histórico.
+    wbot.ev.on("messaging-history.set", async ({ contacts }) => {
+      await saveContacts(contacts, "messaging-history.set");
     });
 
   } catch (err) {
