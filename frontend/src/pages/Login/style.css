@@ -1,207 +1,22 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: "Poppins", sans-serif;
-}
+/* Login-only styles. Never reset global application elements here. */
 .geral {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 100%; min-height: 100vh; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 24px;
+  padding: 32px 20px; color: var(--chatizy-text);
+  background: var(--chatizy-background);
 }
-
-.container-login {
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #ffffff;
-  flex-direction: column;
-}
-
-.container-img {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  max-width: 500px;
-}
-
-.img-login {
-  width: 100%;
-  max-width: 462px;
-}
-.container-footer {
-  padding: 10px;
-  text-align: center;
-  margin-bottom: 10px;
-}
-.container-footer a {
-  color: black;
-  cursor: pointer;
-}
-.container-footer span {
-  max-width: 80px;
-  text-align: center;
-}
-.recovery {
-  display: flex;
-  width: 100%;
-  justify-content: flex-end;
-  margin-right: 5px;
-  margin-top: 5px;
-  color: #FF9100;
-}
-.link-recovery {
-  text-decoration-color: #FF9100;
-  text-emphasis-color: #FF9100;
-  -webkit-text-fill-color: #FF9100;
-  -webkit-text-stroke-color: #FF9100;
-  text-decoration: none;
-}
-.link-recovery:hover {
-  text-decoration: underline;
-}
-.container-right {
-  background-image: url(../../assets/bg-login.png);
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.box {
-  align-items: center;
-  background-color: rgb(255, 255, 255);
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 6px -3px,
-    rgba(0, 0, 0, 0.14) 0px 10px 14px 1px, rgba(0, 0, 0, 0.12) 0px 4px 18px 3px;
-  display: flex;
-  flex-direction: column;
-  inline-size: 462px;
-  line-height: 20.02px;
-  border-radius: 30px;
-  width: 100%;
-  max-width: 500px;
-  padding-bottom: 8px;
-  margin: 0 10px;
-}
-
-.container-header-box {
-  display: flex;
-  margin-top: -18px;
-  padding-left: 40px;
-  padding-right: 40px;
-  width: 100%;
-}
-
-.link-create-count {
-  background-color: rgb(255, 255, 255);
-  border-end-start-radius: 30px;
-  border-top-left-radius: 30px;
-  cursor: pointer;
-  padding-top: 6px;
-  width: 100%;
-}
-.link-create-count:hover {
-  background-color: #ffffff;
-}
-.label-text {
-  cursor: pointer;
-  display: flex;
-  font-weight: 500;
-  justify-content: center;
-  line-height: 24.5px;
-  -webkit-text-fill-color: rgba(0, 0, 0, 0.87);
-  width: 100%;
-}
-.link-enter {
-  align-items: center;
-  background-color: #FF9100;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px,
-    rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
-  cursor: pointer;
-  display: inline-flex;
-  justify-content: center;
-  margin-left: -32px;
-  padding-bottom: 6px;
-  padding-top: 6px;
-  width: 100%;
-  border-radius: 30px;
-}
-.link-enter:hover {
-  background-color: #FF9100;
-  text-decoration: none;
-}
-.link-enter > span {
-  cursor: pointer;
-  display: flex;
-  font-weight: 500;
-  justify-content: center;
-  line-height: 24.5px;
-  -webkit-text-fill-color: rgb(255, 255, 255);
-}
-
-.container-footer-form > p {
-  inline-size: 382px;
-  margin-bottom: 0.35em;
-  text-align: center;
-}
-.termo {
-  text-decoration: none;
-  text-decoration-color: #FF9100;
-  text-emphasis-color: #FF9100;
-  -webkit-text-fill-color: #FF9100;
-  -webkit-text-stroke-color: #FF9100;
-}
-.termo:hover {
-  text-decoration: underline;
-}
-.politica {
-  text-decoration: none;
-  text-decoration-color: #FF9100;
-  text-emphasis-color: #FF9100;
-  -webkit-text-fill-color: #FF9100;
-  -webkit-text-stroke-color: #FF9100;
-}
-.politica:hover {
-  text-decoration: underline;
-}
-@media screen and (max-width: 768px) {
-  .geral {
-    flex-direction: column;
-  }
-  .container {
-    height: 300px;
-    justify-content: center;
-    align-items: center;
-  }
-  .container-footer {
-    display: none;
-  }
-  .container-login {
-    max-height: 300px;
-  }
-}
-@media screen and (max-width: 375px) {
-  .box {
-    margin: 0 10px;
-    width: 90%;
-  }
-  .container-footer-form {
-    width: 90%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-}
+.geral .container-login { width: 100%; display: flex; align-items: center; flex-direction: column; }
+.geral .container-img { display: flex; justify-content: center; width: 100%; }
+.geral .img-login { width: 200px; max-width: 70vw; height: auto; object-fit: contain; }
+.geral .container-footer { order: 2; padding: 12px; text-align: center; font-size: 12px; line-height: 1.8; color: var(--chatizy-muted); }
+.geral .container-footer a { color: inherit; }
+.geral .container-right { width: 100%; max-width: 440px; }
+.geral .box { background: var(--chatizy-surface); border: 1px solid var(--chatizy-border); border-radius: 8px; padding: 28px; box-shadow: var(--chatizy-shadow); }
+.geral .container-header-box { display: flex; gap: 24px; align-items: center; border-bottom: 1px solid var(--chatizy-border); margin-bottom: 24px; }
+.geral .link-create-count, .geral .link-enter { padding: 0 0 14px; text-decoration: none; font-size: 16px; font-weight: 600; color: var(--chatizy-muted); }
+.geral .link-enter { color: var(--chatizy-text); border-bottom: 3px solid var(--chatizy-brand); margin-bottom: -1px; }
+.geral .container-footer-form { text-align: center; font-size: 12px; line-height: 1.7; color: var(--chatizy-muted); margin-top: 24px; }
+.geral .container-footer-form p { margin: 0; }
+.geral .termo, .geral .politica { color: var(--chatizy-link); text-decoration: none; }
+.geral a:hover { text-decoration: underline; }
+@media (max-width: 480px) { .geral { padding: 24px 16px; gap: 20px; } .geral .box { padding: 24px 20px; } }

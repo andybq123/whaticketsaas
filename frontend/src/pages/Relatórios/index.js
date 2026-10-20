@@ -55,7 +55,7 @@ import { isArray, capitalize } from "lodash";
 
 const useStyles = makeStyles((theme) => ({
   mainContainer: {
-    background: 'linear-gradient(to bottom, #e0f7fa, #fff)', // Gradiente de fundo suave
+    background: theme.palette.background.default, // Gradiente de fundo suave
     padding: '20px',
   },
   formControl: {
@@ -68,31 +68,31 @@ const useStyles = makeStyles((theme) => ({
   mainPaper: {
     flex: 1,
     marginTop: 40,
-    borderRadius: 20,
-    border: '1px solid #ddd', // Bordas suaves
+    borderRadius: 8,
+    border: `1px solid ${theme.palette.divider}`, // Bordas suaves
     boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)', // Sombra suave
     marginBottom: 40,
     overflow: 'hidden',
-    backgroundColor: '#f8f9fa',
+    backgroundColor: theme.palette.background.paper,
   },
   mainPaperTable: {
     flex: 1,
     overflow: 'auto',
     height: '68vh',
-    borderRadius: '10px',
-    backgroundColor: '#ffffff',
+    borderRadius: 8,
+    backgroundColor: theme.palette.background.paper,
     boxShadow: '0px 2px 10px rgba(0, 0, 0, 0.05)', // Sombra leve
-    ...theme.scrollbarStylesSoftBig,
+    ...theme.scrollbarStylesSoft,
   },
   mainPaperFilter: {
     flex: 1,
     overflow: 'auto',
     height: '30vh',
     padding: '20px', // Adicionando padding interno
-    backgroundColor: '#f1f3f4',
-    borderRadius: '10px',
+    backgroundColor: theme.palette.action.hover,
+    borderRadius: 8,
     boxShadow: '0px 2px 10px rgba(0, 0, 0, 0.05)',
-    ...theme.scrollbarStylesSoftBig,
+    ...theme.scrollbarStylesSoft,
   },
   mainHeaderBlock: {
     [theme.breakpoints.down('xl')]: {
@@ -117,10 +117,10 @@ const useStyles = makeStyles((theme) => ({
     whiteSpace: 'nowrap',
   },
   button: {
-    backgroundColor: '#1976d2', // Azul material design
-    color: '#fff',
+    backgroundColor: theme.palette.primary.main, // Azul material design
+    color: theme.palette.primary.contrastText,
     '&:hover': {
-      backgroundColor: '#1565c0', // Azul escuro no hover
+      backgroundColor: theme.palette.primary.dark, // Azul escuro no hover
     },
     margin: '5px', // Espaçamento entre botões
     boxShadow: '0px 2px 10px rgba(0, 0, 0, 0.1)', // Sombra leve

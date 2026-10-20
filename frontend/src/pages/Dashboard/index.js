@@ -68,15 +68,16 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     height: "100%",
-    borderRadius: theme.shape.borderRadius * 2,
-    boxShadow: theme.shadows[3],
+    borderRadius: theme.shape.borderRadius,
+    boxShadow: "none",
     transition: "all 0.3s ease",
     "&:hover": {
-      transform: "translateY(-2px)",
-      boxShadow: theme.shadows[6],
+      borderColor: theme.palette.primary.main,
+      boxShadow: theme.shadows[1],
     },
-    background: `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.primary.dark} 100%)`,
-    color: theme.palette.primary.contrastText,
+    background: theme.palette.background.paper,
+    border: `1px solid ${theme.palette.divider}`,
+    color: theme.palette.text.primary,
   },
   cardContent: {
     display: "flex",
@@ -90,7 +91,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "0.875rem",
     fontWeight: 600,
     marginBottom: theme.spacing(0.5),
-    opacity: 0.9,
+    color: theme.palette.text.secondary,
   },
   cardValue: {
     fontSize: "1.75rem",
@@ -100,11 +101,15 @@ const useStyles = makeStyles((theme) => ({
   cardIcon: {
     fontSize: "2.5rem",
     marginLeft: theme.spacing(2),
-    opacity: 0.8,
+    color: theme.palette.primary.main,
+    padding: theme.spacing(1),
+    borderRadius: 8,
+    backgroundColor: theme.palette.action.selected,
+    boxSizing: "content-box",
   },
   fixedHeightPaper: {
     padding: theme.spacing(3),
-    borderRadius: theme.shape.borderRadius * 2,
+    borderRadius: theme.shape.borderRadius,
     height: "100%",
     display: "flex",
     flexDirection: "column",
@@ -112,8 +117,10 @@ const useStyles = makeStyles((theme) => ({
   filterSection: {
     marginBottom: theme.spacing(3),
     padding: theme.spacing(2),
-    borderRadius: theme.shape.borderRadius * 2,
-    backgroundColor: theme.palette.background.paper,
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: "transparent",
+    paddingLeft: 0,
+    paddingRight: 0,
   },
 }));
 

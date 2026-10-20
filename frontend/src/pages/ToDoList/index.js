@@ -10,7 +10,7 @@ import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
@@ -18,11 +18,14 @@ const useStyles = makeStyles({
     margin: '2rem'
   },
   inputContainer: {
+    flexWrap: "wrap",
+    gap: theme.spacing(1),
     display: 'flex',
     width: '100%',
     marginBottom: '1rem'
   },
   input: {
+    minWidth: 200,
     flexGrow: 1,
     marginRight: '1rem'
   },
@@ -30,13 +33,14 @@ const useStyles = makeStyles({
     width: '100%',
     height: '100%',
     marginTop: '1rem',
-    backgroundColor: '#f5f5f5',
-    borderRadius: '5px',
+    backgroundColor: theme.palette.background.paper,
+    border: `1px solid ${theme.palette.divider}`,
+    borderRadius: 8,
   },
   list: {
     marginBottom: '5px'
   }
-});
+}));
 
 const ToDoList = () => {
   const classes = useStyles();
@@ -112,10 +116,10 @@ const ToDoList = () => {
             <ListItem key={index} className={classes.list}>
               <ListItemText primary={task.text} secondary={task.updatedAt.toLocaleString()} />
               <ListItemSecondaryAction>
-                <IconButton onClick={() => handleEditTask(index)}>
+                <IconButton aria-label="Editar tarefa" title="Editar tarefa" onClick={() => handleEditTask(index)}>
                   <EditIcon />
                 </IconButton>
-                <IconButton onClick={() => handleDeleteTask(index)}>
+                <IconButton aria-label="Excluir tarefa" title="Excluir tarefa" onClick={() => handleDeleteTask(index)}>
                   <DeleteIcon />
                 </IconButton>
               </ListItemSecondaryAction>

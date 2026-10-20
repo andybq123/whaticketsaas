@@ -40,6 +40,8 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(3),
   },
   header: {
+    flexWrap: "wrap",
+    gap: theme.spacing(2),
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
@@ -52,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
   },
   createButton: {
     backgroundColor: theme.palette.primary.main,
-    color: "white",
+    color: theme.palette.primary.contrastText,
     "&:hover": {
       backgroundColor: theme.palette.primary.dark,
     },

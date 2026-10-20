@@ -61,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    borderTop: "1px solid rgba(0, 0, 0, 0.12)",
+    borderTop: `1px solid ${theme.palette.divider}`,
   },
   newMessageBox: {
     backgroundColor: theme.palette.newmessagebox,
@@ -72,24 +72,26 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
   },
   messageInputWrapper: {
-    padding: 6,
+    minWidth: 0,
+    padding: 8,
     marginRight: 7,
     backgroundColor: theme.palette.inputdigita,
     display: "flex",
-    borderRadius: 20,
+    borderRadius: 8,
     flex: 1,
     position: "relative",
   },
   messageInput: {
+    minWidth: 0,
     paddingLeft: 10,
     flex: 1,
     border: "none",
   },
   sendMessageIcons: {
-    color: "grey",
+    color: theme.palette.text.secondary,
   },
   ForwardMessageIcons: {
-    color: grey[700],
+    color: theme.palette.text.secondary,
     transform: 'scaleX(-1)'
   },
   uploadInput: {
@@ -102,7 +104,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
     alignItems: "center",
     backgroundColor: theme.palette.inputdigita,
-    borderTop: "1px solid rgba(0, 0, 0, 0.12)",
+    borderTop: `1px solid ${theme.palette.divider}`,
   },
   emojiBox: {
     position: "absolute",
@@ -138,10 +140,10 @@ const useStyles = makeStyles((theme) => ({
     alignContent: "middle",
   },
   cancelAudioIcon: {
-    color: "red",
+    color: theme.palette.error.main,
   },
   sendAudioIcon: {
-    color: "green",
+    color: theme.palette.success.main,
   },
   replyginMsgWrapper: {
     display: "flex",
@@ -156,7 +158,7 @@ const useStyles = makeStyles((theme) => ({
     flex: 1,
     marginRight: 5,
     overflowY: "hidden",
-    backgroundColor: "rgba(0, 0, 0, 0.05)",
+    backgroundColor: theme.palette.action.hover,
     borderRadius: "7.5px",
     display: "flex",
     position: "relative",
@@ -210,7 +212,7 @@ const useStyles = makeStyles((theme) => ({
     padding: '8px 12px',
     fontSize: '0.75rem',
     backgroundColor: theme.palette.quicktags.main, 
-    color: '#fff',
+    color: theme.palette.quicktags.contrastText,
     fontWeight: 500,
     textTransform: 'none',
     border: 'none',
@@ -228,7 +230,7 @@ const useStyles = makeStyles((theme) => ({
     top: '50%',
     transform: 'translateY(-50%)',
     zIndex: 1,
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    backgroundColor: theme.palette.background.paper,
     padding: '4px',
     '&.left': {
       left: '5px',
@@ -265,8 +267,8 @@ const useStyles = makeStyles((theme) => ({
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: 'rgba(102, 126, 234, 0.1)',
-    border: '2px dashed #667eea',
+    backgroundColor: theme.palette.action.selected,
+    border: `2px dashed ${theme.palette.primary.main}`,
     borderRadius: '20px',
     display: 'flex',
     alignItems: 'center',
@@ -275,7 +277,7 @@ const useStyles = makeStyles((theme) => ({
     pointerEvents: 'none',
   },
   dragOverlayText: {
-    color: '#667eea',
+    color: theme.palette.primary.main,
     fontSize: '16px',
     fontWeight: 600,
     textAlign: 'center',

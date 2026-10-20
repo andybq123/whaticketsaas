@@ -12,9 +12,9 @@ const useStyles = makeStyles(theme => ({
 	chatContainer: {
 		flex: 1,
 		padding: 0,
-		height: `calc(100vh - 56px)`,
-		minHeight: `calc(100vh - 56px)`,
-		maxHeight: `calc(100vh - 56px)`,
+		height: "100%",
+		minHeight: 0,
+		maxHeight: "100%",
 		overflowY: "hidden",
 		display: "flex",
 		flexDirection: "column",
@@ -26,6 +26,7 @@ const useStyles = makeStyles(theme => ({
 		minHeight: 0,
 		height: "100%",
 		flexDirection: "column",
+        borderRight: `1px solid ${theme.palette.divider}`,
 		overflowY: "hidden",
 	},
 	messagesWrapper: {
@@ -73,7 +74,7 @@ const TicketsCustom = () => {
 							<div>
 								<center>
 									<img
-										style={{ margin: "0 auto", width: "80%" }}
+										style={{ margin: "0 auto", width: "80%", maxWidth: 300 }}
 										src={`${logoImg}?r=${Math.random()}`}
 										alt={`${process.env.REACT_APP_NAME_SYSTEM}`}
 									/>

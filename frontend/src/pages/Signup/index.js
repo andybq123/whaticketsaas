@@ -65,9 +65,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     minHeight: '100vh',
-    background: theme.palette.type === 'light' 
-      ? '#f8fafc' 
-      : '#0f172a',
+    background: theme.palette.background.default,
   },
   container: {
     display: 'flex',
@@ -104,14 +102,10 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     padding: theme.spacing(4),
-    borderRadius: 16,
+    borderRadius: 8,
     background: theme.palette.background.paper,
-    border: theme.palette.type === 'light' 
-      ? '1px solid #e2e8f0' 
-      : '1px solid #1e293b',
-    boxShadow: theme.palette.type === 'light'
-      ? '0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02)'
-      : '0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.15)',
+    border: `1px solid ${theme.palette.divider}`,
+    boxShadow: theme.shadows[1],
     position: 'relative',
     overflow: 'hidden',
     '&:before': {
@@ -138,11 +132,11 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(1.75),
     fontSize: '1rem',
     fontWeight: 600,
-    borderRadius: 12,
+    borderRadius: 8,
     background: theme.palette.primary.main,
-    color: 'white',
+    color: theme.palette.primary.contrastText,
     textTransform: 'none',
-    letterSpacing: 0.5,
+    letterSpacing: 0,
     boxShadow: `0 4px 6px -1px ${theme.palette.primary.light}20`,
     '&:hover': {
       background: theme.palette.primary.dark,
@@ -169,7 +163,7 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
-    borderRadius: 16,
+    borderRadius: 8,
     background: theme.palette.background.paper,
     border: '1px solid',
     borderColor: theme.palette.divider,
@@ -177,7 +171,7 @@ const useStyles = makeStyles((theme) => ({
     overflow: 'hidden',
     position: 'relative',
     '&:hover': {
-      transform: 'translateY(-8px)',
+      transform: 'none',
       boxShadow: theme.shadows[6],
       borderColor: theme.palette.primary.main,
     },
@@ -185,13 +179,11 @@ const useStyles = makeStyles((theme) => ({
   pricingCardSelected: {
     borderColor: theme.palette.primary.main,
     boxShadow: `0 0 0 2px ${theme.palette.primary.main}`,
-    transform: 'translateY(-8px)',
+    transform: 'none',
   },
   pricingCardHeader: {
     padding: theme.spacing(3),
-    background: theme.palette.type === 'light' 
-      ? '#f1f5f9' 
-      : '#1e293b',
+    background: theme.palette.action.hover,
     position: 'relative',
   },
   pricingCardTitle: {
@@ -259,7 +251,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-between',
     padding: theme.spacing(2.5),
     background: theme.palette.action.selected,
-    borderRadius: 12,
+    borderRadius: 8,
     marginBottom: theme.spacing(3),
     border: `1px solid ${theme.palette.divider}`,
   },
@@ -276,7 +268,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.getContrastText(theme.palette.warning.main),
     fontWeight: 700,
     padding: theme.spacing(0.5, 2),
-    borderRadius: 16,
+    borderRadius: 8,
     fontSize: '0.75rem',
     display: 'flex',
     alignItems: 'center',
@@ -288,7 +280,7 @@ const useStyles = makeStyles((theme) => ({
   },
   inputField: {
     '& .MuiOutlinedInput-root': {
-      borderRadius: 12,
+      borderRadius: 8,
       '& fieldset': {
         borderColor: theme.palette.divider,
       },

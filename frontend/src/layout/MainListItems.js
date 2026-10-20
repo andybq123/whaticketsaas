@@ -67,9 +67,9 @@ import {
 
 const useStyles = makeStyles((theme) => ({
   ListSubheader: {
-    height: 26,
-    marginTop: "-15px",
-    marginBottom: "-10px",
+    minHeight: 32,
+    marginTop: 8,
+    marginBottom: 0,
   },
   logoutButton: {
     borderRadius: 10,
@@ -82,15 +82,16 @@ const useStyles = makeStyles((theme) => ({
   },
   listItem: {
     borderRadius: 8,
-    margin: '4px 8px',
+    margin: '3px 8px',
+    width: "calc(100% - 16px)",
 
     justifyContent: collapsed => collapsed ? 'center' : 'flex-start',
-    minHeight: 48,
+    minHeight: 44,
     padding: collapsed => collapsed ? '8px 12px' : '8px 16px',
   },
   listItemIcon: {
-    minWidth: collapsed => collapsed ? 0 : 40,
-    marginRight: collapsed => collapsed ? 0 : theme.spacing(2),
+    minWidth: collapsed => collapsed ? 0 : 24,
+    marginRight: collapsed => collapsed ? 0 : theme.spacing(1.5),
     color: theme.palette.text.secondary,
     display: 'flex',
     alignItems: 'center',
@@ -109,11 +110,11 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     fontSize: "13px",
     textAlign: "left",
-    paddingLeft: 28,
+    paddingLeft: 24,
     color: theme.palette.primary.main,
     fontWeight: 600,
     textTransform: "uppercase",
-    letterSpacing: "0.5px",
+    letterSpacing: 0,
     marginTop: theme.spacing(2),
     marginBottom: theme.spacing(1),
     opacity: collapsed => collapsed ? 0 : 1,
@@ -122,7 +123,7 @@ const useStyles = makeStyles((theme) => ({
   },
   versionBadge: {
     backgroundColor: theme.palette.success.main,
-    color: "white",
+    color: theme.palette.success.contrastText,
     fontSize: "10px",
     padding: "2px 8px",
     borderRadius: "12px",
@@ -147,7 +148,8 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center'
   },
   activeItem: {
-    //backgroundColor: theme.palette.action.selected + '!important',
+    backgroundColor: theme.palette.action.selected,
+    color: theme.palette.text.primary,
     borderLeft: `3px solid ${theme.palette.primary.main}`,
     '& $listItemIcon': {
       color: theme.palette.primary.main,
@@ -161,7 +163,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 500,
   },
   menuWrapper: {
-    width: collapsed => collapsed ? 40 : 280,
+    width: "100%",
     transition: 'width 0.3s ease',
     overflow: 'hidden',
   },
