@@ -3,9 +3,9 @@ export const createChatizyOptions = (mode) => {
   const dark = mode === "dark";
   const colors = {
     brand: "#FF9100", brandStrong: dark ? "#FFAD42" : "#A64B00",
-    canvas: dark ? "#181A1D" : "#F5F6F8",
+    canvas: dark ? "#17191D" : "#F3F5F8",
     surface: dark ? "#222529" : "#FFFFFF",
-    elevated: dark ? "#2B2F34" : "#F0F2F5",
+    elevated: dark ? "#2B2F36" : "#EDF1F6",
     text: dark ? "#F2F3F5" : "#20242A",
     muted: dark ? "#B2B8C1" : "#626A76",
     border: dark ? "#3B4149" : "#DEE2E8",
@@ -13,21 +13,26 @@ export const createChatizyOptions = (mode) => {
     outgoing: dark ? "#283B32" : "#E4F2EA",
     outgoingQuote: dark ? "#213229" : "#D5E8DE",
     success: dark ? "#66C79A" : "#238259",
+    successSoft: dark ? "#213C32" : "#E3F4EC",
+    errorSoft: dark ? "#452B30" : "#FDEBEC",
+    infoSoft: dark ? "#243A50" : "#E7F0FC",
+    warningSoft: dark ? "#453A24" : "#FFF3D6",
     error: dark ? "#FF8585" : "#C83838",
     info: dark ? "#80B9EF" : "#276DA8",
   };
-  const softShadow = dark ? "0 2px 8px rgba(0,0,0,.18)" : "0 2px 8px rgba(32,36,42,.06)";
+  const softShadow = dark ? "0 4px 20px rgba(0,0,0,.18)" : "0 4px 20px rgba(32,36,42,.045)";
   const palette = {
     type: mode, mode,
     primary: { main: colors.brandStrong, light: colors.brand, dark: dark ? "#E69327" : "#803900", contrastText: dark ? "#20242A" : "#FFFFFF" },
     secondary: { main: colors.info },
-    success: { main: colors.success }, error: { main: colors.error }, info: { main: colors.info },
-    warning: { main: colors.brandStrong },
+    success: { main: colors.success, soft: colors.successSoft, contrastText: colors.surface }, error: { main: colors.error, soft: colors.errorSoft, contrastText: colors.surface }, info: { main: colors.info, soft: colors.infoSoft, contrastText: colors.surface },
+    warning: { main: colors.brandStrong, soft: colors.warningSoft },
     background: { default: colors.canvas, paper: colors.surface },
     text: { primary: colors.text, secondary: colors.muted, sair: colors.text },
     divider: colors.border,
     action: { hover: colors.elevated, selected: colors.selected, focus: colors.selected },
     brand: { main: colors.brand },
+    status: { pending: colors.warningSoft, open: colors.successSoft, closed: colors.errorSoft },
     quicktags: { main: colors.selected, contrastText: colors.text },
     sair: { main: colors.elevated, dark: colors.selected },
     vcard: { main: colors.brandStrong },
@@ -56,6 +61,7 @@ export const createChatizyOptions = (mode) => {
       "--chatizy-text": colors.text, "--chatizy-muted": colors.muted,
       "--chatizy-border": colors.border, "--chatizy-brand": colors.brand,
       "--chatizy-link": colors.brandStrong, "--chatizy-shadow": softShadow,
+      "--chatizy-radius": "16px",
     },
     "#root": { minHeight: "100vh" },
     "a, button, input, textarea, select": { WebkitTapHighlightColor: "transparent" },
@@ -68,30 +74,40 @@ export const createChatizyOptions = (mode) => {
   };
   const overrides = {
     MuiCssBaseline: { "@global": global },
-    MuiButton: { root: { borderRadius: 8, textTransform: "none", fontWeight: 600, letterSpacing: 0, minHeight: 38 }, contained: { boxShadow: "none", "&:hover": { boxShadow: softShadow } }, outlinedPrimary: { borderColor: colors.border, "&:hover": { backgroundColor: colors.selected, borderColor: colors.brandStrong } } },
+    MuiButton: { root: { borderRadius: 12, textTransform: "none", fontWeight: 600, letterSpacing: 0, minHeight: 40 }, contained: { boxShadow: "none", "&:hover": { boxShadow: softShadow } }, outlinedPrimary: { borderColor: colors.border, "&:hover": { backgroundColor: colors.selected, borderColor: colors.brandStrong } } },
     MuiIconButton: { root: { color: colors.muted, "&:hover": { backgroundColor: colors.elevated } } },
-    MuiPaper: { rounded: { borderRadius: 8 }, elevation1: { boxShadow: softShadow }, outlined: { borderColor: colors.border } },
-    MuiCard: { root: { border: `1px solid ${colors.border}`, boxShadow: "none" } },
-    MuiDialog: { paper: { borderRadius: 8, backgroundImage: "none" }, paperWidthSm: { width: "calc(100% - 32px)", margin: 16 } },
+    MuiPaper: { rounded: { borderRadius: 16 }, elevation1: { boxShadow: softShadow }, outlined: { borderColor: colors.border } },
+    MuiCard: { root: { borderRadius: 16, border: `1px solid ${colors.border}`, boxShadow: "none" } },
+    MuiDialog: { paper: { borderRadius: 20, backgroundImage: "none" }, paperWidthSm: { width: "calc(100% - 32px)", margin: 16 } },
     MuiDialogTitle: { root: { padding: "20px 24px 16px", borderBottom: `1px solid ${colors.border}` } },
     MuiDialogActions: { root: { padding: "16px 24px", borderTop: `1px solid ${colors.border}`, flexWrap: "wrap", gap: 8 } },
-    MuiOutlinedInput: { root: { borderRadius: 8, backgroundColor: colors.surface }, notchedOutline: { borderColor: colors.border }, input: { padding: "14px 12px" }, inputMarginDense: { padding: "11px 12px" } },
+    MuiOutlinedInput: { root: { borderRadius: 12, backgroundColor: colors.surface }, notchedOutline: { borderColor: colors.border }, input: { padding: "14px 12px" }, inputMarginDense: { padding: "11px 12px" } },
     MuiInputLabel: { root: { color: colors.muted } },
     MuiTableCell: { root: { borderBottom: `1px solid ${colors.border}`, padding: "14px 16px", fontSize: 14 }, head: { backgroundColor: colors.elevated, color: colors.muted, fontWeight: 600, whiteSpace: "nowrap" } },
     MuiTableRow: { hover: { "&:hover": { backgroundColor: colors.elevated } } },
     MuiTab: { root: { minHeight: 48, textTransform: "none", fontWeight: 600, letterSpacing: 0, fontSize: 14 } },
     MuiTabs: { indicator: { height: 3, borderRadius: "3px 3px 0 0" } },
-    MuiChip: { root: { borderRadius: 6, fontWeight: 500 } },
+    MuiChip: { root: { borderRadius: 8, fontWeight: 500 } },
     MuiTooltip: { tooltip: { borderRadius: 6, fontSize: 12, padding: "8px 10px" } },
     MuiListItem: { root: { "&$selected, &$selected:hover": { backgroundColor: colors.selected } } },
-    MuiMenu: { paper: { border: `1px solid ${colors.border}`, boxShadow: softShadow } },
+    MuiMenu: { paper: { borderRadius: 12, border: `1px solid ${colors.border}`, boxShadow: softShadow } },
     MuiBottomNavigation: { root: { borderBottom: `1px solid ${colors.border}`, backgroundColor: colors.surface } },
   };
   const components = Object.fromEntries(Object.entries(overrides).filter(([key]) => key !== "MuiCssBaseline").map(([key, styles]) => [key, { styleOverrides: styles }]));
+  // MUI v5 has different state classes: never pass JSS $selected references to Emotion.
+  components.MuiListItem = { styleOverrides: { root: { "&.Mui-selected, &.Mui-selected:hover": { backgroundColor: colors.selected } } } };
+  components.MuiCssBaseline = { styleOverrides: global };
+  components.MuiCardHeader = { styleOverrides: { root: { minWidth: 0, flex: 1 }, content: { minWidth: 0 }, title: { fontSize: 15, fontWeight: 600 }, subheader: { fontSize: 12 } } };
+  overrides.MuiCardHeader = { root: { minWidth: 0, flex: 1 }, content: { minWidth: 0 }, title: { fontSize: 15, fontWeight: 600 }, subheader: { fontSize: 12 } };
+  overrides.MuiDialogContent = { root: { padding: "24px", "&:first-child": { paddingTop: 24 } } };
+  components.MuiDialogContent = { styleOverrides: overrides.MuiDialogContent };
+  overrides.MuiTableContainer = { root: { borderRadius: 16 } };
+  components.MuiTableContainer = { styleOverrides: overrides.MuiTableContainer };
   return {
-    mode, palette, shape: { borderRadius: 8 },
+    mode, palette, shape: { borderRadius: 16 },
     typography: { fontFamily: '"Segoe UI", "Helvetica Neue", Arial, sans-serif', fontSize: 14, allVariants: { letterSpacing: 0 }, h4: { fontWeight: 700 }, h5: { fontWeight: 700 }, h6: { fontWeight: 600 }, button: { textTransform: "none", letterSpacing: 0 } },
     overrides, components,
+    chatizy: { radius: 16, controlRadius: 12, shadow: softShadow },
     scrollbarStyles: { "&::-webkit-scrollbar": { width: 6, height: 6 }, "&::-webkit-scrollbar-thumb": { backgroundColor: colors.border, borderRadius: 8 }, "&::-webkit-scrollbar-thumb:hover": { backgroundColor: colors.muted } },
     scrollbarStylesSoft: { "&::-webkit-scrollbar": { width: 6, height: 6 }, "&::-webkit-scrollbar-thumb": { backgroundColor: colors.border, borderRadius: 8 } },
   };

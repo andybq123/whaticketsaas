@@ -81,7 +81,10 @@ const useStyles = makeStyles((theme) => ({
   mainPaper: {
     minHeight: 0,
     minWidth: 0,
-    border: `1px solid ${theme.palette.divider}`,
+    border: "none",
+    borderRadius: 0,
+    backgroundColor: "transparent",
+    "& .MuiTable-root": { backgroundColor: theme.palette.background.paper, borderCollapse: "separate", borderSpacing: 0, border: `1px solid ${theme.palette.divider}`, borderRadius: theme.chatizy.radius, overflow: "hidden" },
     boxShadow: "none",
     flex: 1,
     padding: theme.spacing(1),

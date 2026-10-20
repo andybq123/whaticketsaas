@@ -36,13 +36,15 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     minHeight: 0,
     overflowY: "hidden",
-    border: `1px solid ${theme.palette.divider}`,
+    border: "none",
   },
   gridContainer: {
     flex: 1,
     height: "100%",
-    border: `1px solid ${theme.palette.divider}`,
+    border: "none",
     backgroundColor: theme.palette.background.paper,
+    borderRadius: theme.chatizy.radius,
+    overflow: "hidden",
   },
   gridItem: {
     height: "100%",

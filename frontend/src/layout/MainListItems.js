@@ -81,12 +81,12 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   listItem: {
-    borderRadius: 8,
+    borderRadius: theme.chatizy.controlRadius,
     margin: '3px 8px',
     width: "calc(100% - 16px)",
 
     justifyContent: collapsed => collapsed ? 'center' : 'flex-start',
-    minHeight: 44,
+    minHeight: 42,
     padding: collapsed => collapsed ? '8px 12px' : '8px 16px',
   },
   listItemIcon: {
@@ -111,9 +111,9 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "13px",
     textAlign: "left",
     paddingLeft: 24,
-    color: theme.palette.primary.main,
+    color: theme.palette.text.secondary,
     fontWeight: 600,
-    textTransform: "uppercase",
+    textTransform: "none",
     letterSpacing: 0,
     marginTop: theme.spacing(2),
     marginBottom: theme.spacing(1),
@@ -150,7 +150,8 @@ const useStyles = makeStyles((theme) => ({
   activeItem: {
     backgroundColor: theme.palette.action.selected,
     color: theme.palette.text.primary,
-    borderLeft: `3px solid ${theme.palette.primary.main}`,
+    boxShadow: `inset 3px 0 0 ${theme.palette.brand.main}`,
+    "& .MuiListItemText-primary": { fontWeight: 700 },
     '& $listItemIcon': {
       color: theme.palette.primary.main,
     }

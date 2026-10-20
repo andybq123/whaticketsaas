@@ -10,6 +10,7 @@ import ChatIcon from '@material-ui/icons/Chat';
 
 import TicketsManagerTabs from "../../components/TicketsManagerTabs/";
 import Ticket from "../../components/Ticket/";
+import ChatizyBrand from "../../components/ChatizyBrand";
 import TicketAdvancedLayout from "../../components/TicketAdvancedLayout";
 import { TicketsContext } from "../../context/Tickets/TicketsContext";
 
@@ -66,15 +67,12 @@ const TicketAdvanced = (props) => {
     const logoDark = `${process.env.REACT_APP_BACKEND_URL}/public/logotipos/logo_w.png`;
 
     // Definindo o logo inicial com base no modo de tema atual
-    const initialLogo = theme.palette.type === 'light' ? logoLight : logoDark;
-    const [logoImg, setLogoImg] = useState(initialLogo);
+    const logoImg = theme.palette.type === 'light' ? logoLight : logoDark;
 
     const renderPlaceholder = () => {
         return <Box className={classes.placeholderContainer}>
             {/*<div className={classes.placeholderItem}>{i18n.t("chat.noTicketMessage")}</div>*/}
-            <div>
-                <center><img style={{ margin: "0 auto", width: "80%" }} src={`${logoImg}?r=${Math.random()}`} alt={`${process.env.REACT_APP_NAME_SYSTEM}`} /></center>
-            </div>
+            <ChatizyBrand size="large" source={logoImg} />
             <br />
             <Button onClick={() => setOption(1)} variant="contained" color="primary">
                 Selecionar Ticket

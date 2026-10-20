@@ -9,7 +9,11 @@ const useStyles = makeStyles(theme => ({
 		display: "flex",
 		backgroundColor: theme.palette.tabHeaderBackground,
 		flex: "none",
-		borderBottom: "1px solid rgba(0, 0, 0, 0.12)",
+		border: "none",
+        borderBottom: `1px solid ${theme.palette.divider}`,
+        alignItems: "center",
+        minHeight: 72,
+        minWidth: 0,
 		[theme.breakpoints.down("sm")]: {
 			flexWrap: "wrap"
 		}

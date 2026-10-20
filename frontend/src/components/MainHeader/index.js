@@ -10,7 +10,9 @@ const useStyles = makeStyles(theme => ({
         gap: theme.spacing(2),
         flexWrap: "wrap",
         flexShrink: 0,
-        minHeight: 56,
+        minHeight: 64,
+        borderBottom: `1px solid ${theme.palette.divider}`,
+        marginBottom: theme.spacing(2),
 	},
 }));
 

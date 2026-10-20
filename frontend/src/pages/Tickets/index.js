@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
@@ -6,21 +6,22 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 
 import TicketsManager from "../../components/TicketsManagerTabs/";
 import Ticket from "../../components/Ticket/";
-import { i18n } from "../../translate/i18n";
+import ChatizyBrand from "../../components/ChatizyBrand";
 
 const useStyles = makeStyles(theme => ({
 	chatContainer: {
 		flex: 1,
-		padding: 0,
-		height: `calc(100vh - 56px)`,
-		minHeight: `calc(100vh - 56px)`,
-		maxHeight: `calc(100vh - 56px)`,
+		padding: theme.spacing(2),
+		height: "100%",
+		minHeight: 0,
+		maxHeight: "100%",
 		overflowY: "hidden",
 		display: "flex",
 		flexDirection: "column",
 	},
 
 	contactsWrapper: {
+        paddingRight: theme.spacing(1.5),
 		display: "flex",
 		flex: 1,
 		minHeight: 0,
@@ -36,7 +37,9 @@ const useStyles = makeStyles(theme => ({
 		flexDirection: "column",
 	},
 	welcomeMsg: {
-		backgroundColor: theme.palette.boxticket,
+		backgroundColor: theme.palette.background.paper,
+        borderRadius: theme.chatizy.radius,
+        border: `1px solid ${theme.palette.divider}`,
 		display: "flex",
 		justifyContent: "space-evenly",
 		alignItems: "center",
@@ -48,14 +51,10 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Chat = () => {
-	const theme = useTheme();
-	const [logoImg, setLogoImg] = useState(
-		theme.palette.type === "light"
-			? `${process.env.REACT_APP_BACKEND_URL}/public/logotipos/interno.png`
-			: `${process.env.REACT_APP_BACKEND_URL}/public/logotipos/logo_w.png`
-	);
 
 	const classes = useStyles();
+	const theme = useTheme();
+	const logoSource = `${process.env.REACT_APP_BACKEND_URL}/public/logotipos/${theme.palette.type === "light" ? "interno.png" : "logo_w.png"}`;
 	const { ticketId } = useParams();
 
 	return (
@@ -68,16 +67,8 @@ const Chat = () => {
 					{ticketId ? (
 						<Ticket />
 					) : (
-						<Paper square variant="outlined" className={classes.welcomeMsg}>
-							<div>
-								<center>
-									<img
-										style={{ margin: "0 auto", width: "80%" }}
-										src={`${logoImg}?r=${Math.random()}`}
-										alt={`${process.env.REACT_APP_NAME_SYSTEM}`}
-									/>
-								</center>
-							</div>
+						<Paper variant="outlined" className={classes.welcomeMsg}>
+							<ChatizyBrand size="large" source={logoSource} />
 						</Paper>
 					)}
 				</Grid>

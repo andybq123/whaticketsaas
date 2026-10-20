@@ -26,20 +26,21 @@ import OnlyForSuperUser from "../../components/OnlyForSuperUser";
 const useStyles = makeStyles((theme) => ({
   root: {
     flex: 1,
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: "transparent",
   },
   mainPaper: {
     minHeight: 0,
     minWidth: 0,
-    border: `1px solid ${theme.palette.divider}`,
+    border: "none",
+    borderRadius: 0,
     boxShadow: "none",
     ...theme.scrollbarStyles,
     overflowY: "auto",
     flex: 1,
   },
   tab: {
-    backgroundColor: theme.palette.options,
-    borderRadius: 4,
+    backgroundColor: theme.palette.background.paper,
+    borderRadius: theme.chatizy.controlRadius,
   },
   paper: {
     ...theme.scrollbarStyles,
@@ -47,6 +48,8 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     display: "flex",
     alignItems: "center",
+    flexWrap: "wrap",
+    gap: theme.spacing(2),
     width: "100%",
   },
   container: {

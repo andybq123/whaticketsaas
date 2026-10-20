@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
   },
   messagesList: {
     backgroundColor: theme.palette.background.default,
-    backgroundImage: theme.mode === 'light' ? `url(${whatsBackground})` : `url(${whatsBackgroundDark})`,
+    backgroundImage: "none",
     display: "flex",
     flexDirection: "column",
     flexGrow: 1,
@@ -79,7 +79,7 @@ const useStyles = makeStyles((theme) => ({
   },
   messageLeft: {
     marginRight: 20,
-    marginTop: 2,
+    marginTop: 8,
     minWidth: 100,
     maxWidth: "min(600px, 90%)",
     height: "auto",
@@ -96,14 +96,14 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.primary,
     alignSelf: "flex-start",
     borderTopLeftRadius: 0,
-    borderTopRightRadius: 8,
-    borderBottomLeftRadius: 8,
-    borderBottomRightRadius: 8,
+    borderTopRightRadius: 14,
+    borderBottomLeftRadius: 14,
+    borderBottomRightRadius: 14,
     paddingLeft: 5,
     paddingRight: 5,
     paddingTop: 5,
     paddingBottom: 0,
-    boxShadow: theme.shadows[1],
+    boxShadow: theme.chatizy.shadow,
   },
   quotedContainerLeft: {
     margin: "0 0 6px",
@@ -124,11 +124,11 @@ const useStyles = makeStyles((theme) => ({
   quotedSideColorLeft: {
     flex: "none",
     width: "4px",
-    backgroundColor: "#6bcbef",
+    backgroundColor: theme.palette.info.main,
   },
   messageRight: {
     marginLeft: 20,
-    marginTop: 2,
+    marginTop: 8,
     minWidth: 100,
     maxWidth: "min(600px, 90%)",
     height: "auto",
@@ -144,15 +144,15 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.message.outgoing,
     color: theme.palette.text.primary,
     alignSelf: "flex-end",
-    borderTopLeftRadius: 8,
-    borderTopRightRadius: 8,
-    borderBottomLeftRadius: 8,
+    borderTopLeftRadius: 14,
+    borderTopRightRadius: 14,
+    borderBottomLeftRadius: 14,
     borderBottomRightRadius: 0,
     paddingLeft: 5,
     paddingRight: 5,
     paddingTop: 5,
     paddingBottom: 0,
-    boxShadow: theme.shadows[1],
+    boxShadow: theme.chatizy.shadow,
   },
   messageSticker: {
     backgroundColor: "transparent !important",
@@ -176,7 +176,7 @@ const useStyles = makeStyles((theme) => ({
   quotedSideColorRight: {
     flex: "none",
     width: "4px",
-    backgroundColor: "#35cd96",
+    backgroundColor: theme.palette.success.main,
   },
   messageActionsButton: {
     display: "flex",
@@ -191,7 +191,7 @@ const useStyles = makeStyles((theme) => ({
   },
   messageContactName: {
     display: "flex",
-    color: "#6bcbef",
+    color: theme.palette.info.main,
     fontWeight: 500,
   },
   textContentItem: {
@@ -201,7 +201,7 @@ const useStyles = makeStyles((theme) => ({
   textContentItemEdited: {
     overflowWrap: "break-word",
     padding: "3px 120px 6px 6px",
-    borderLeft: "3px solid #6bcbef",
+    borderLeft: `3px solid ${theme.palette.info.main}`,
   },
   textContentItemDeleted: {
     fontStyle: "italic",
@@ -223,10 +223,10 @@ const useStyles = makeStyles((theme) => ({
     objectFit: "cover",
     width: 250,
     height: 200,
-    borderTopLeftRadius: 8,
-    borderTopRightRadius: 8,
-    borderBottomLeftRadius: 8,
-    borderBottomRightRadius: 8,
+    borderTopLeftRadius: 14,
+    borderTopRightRadius: 14,
+    borderBottomLeftRadius: 14,
+    borderBottomRightRadius: 14,
   },
   timestamp: {
     fontSize: 11,
@@ -243,7 +243,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     margin: "10px",
     borderRadius: "10px",
-    boxShadow: theme.shadows[1],
+    boxShadow: theme.chatizy.shadow,
   },
   dailyTimestampText: {
     color: theme.palette.text.secondary,

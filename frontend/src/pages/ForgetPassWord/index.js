@@ -40,14 +40,14 @@ const useStyles = makeStyles((theme) => ({
 	},
 	card: {
 		padding: theme.spacing(4, 3),
-		borderRadius: 8,
-		boxShadow: theme.shadows[4],
+		borderRadius: theme.chatizy.controlRadius,
+		boxShadow: theme.chatizy.shadow,
 		background: theme.palette.background.paper,
 		textAlign: "center",
 		transition: "transform 0.3s, box-shadow 0.3s",
 		"&:hover": {
 			transform: "none",
-			boxShadow: theme.shadows[6],
+			boxShadow: theme.chatizy.shadow,
 		},
 	},
 	logoContainer: {
@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
 		display: "flex",
 		alignItems: "center",
 		justifyContent: "center",
-		boxShadow: theme.shadows[4],
+		boxShadow: theme.chatizy.shadow,
 		border: `1px solid ${theme.palette.divider}`,
 		position: "relative",
 		zIndex: 2,
@@ -81,7 +81,7 @@ const useStyles = makeStyles((theme) => ({
 	inputField: {
 		marginBottom: theme.spacing(2),
 		"& .MuiOutlinedInput-root": {
-			borderRadius: 8,
+			borderRadius: theme.chatizy.controlRadius,
 			backgroundColor: theme.palette.background.default,
 			"& fieldset": {
 				borderColor: theme.palette.divider,
@@ -104,7 +104,7 @@ const useStyles = makeStyles((theme) => ({
 	submitButton: {
 		margin: theme.spacing(3, 0, 2),
 		padding: theme.spacing(1.5),
-		borderRadius: 8,
+		borderRadius: theme.chatizy.controlRadius,
 		fontWeight: 600,
 		fontSize: "1rem",
 		letterSpacing: 0,
@@ -113,7 +113,7 @@ const useStyles = makeStyles((theme) => ({
 		transition: "all 0.2s",
 		"&:hover": {
 			transform: "translateY(-2px)",
-			boxShadow: theme.shadows[4],
+			boxShadow: theme.chatizy.shadow,
 		},
 		"&:active": {
 			transform: "translateY(0)",

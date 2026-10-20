@@ -8,13 +8,13 @@ import { makeStyles } from "@material-ui/core/styles";
 import { i18n } from "../../translate/i18n";
 import "./style.css";
 import { AuthContext } from "../../context/Auth/AuthContext";
-import logo from "../../assets/logo.png";
+import ChatizyBrand from "../../components/ChatizyBrand";
 import api from "../../services/api";
 
 const useStyles = makeStyles((theme) => ({
   form: { width: "100%", display: "flex", flexDirection: "column", gap: theme.spacing(1) },
   submit: { margin: theme.spacing(2, 0, 1), minHeight: 44 },
-  input: { "& .MuiOutlinedInput-root": { borderRadius: 8 } },
+  input: { "& .MuiOutlinedInput-root": { borderRadius: theme.chatizy.controlRadius } },
   recovery: { textAlign: "center", marginTop: theme.spacing(1) },
 }));
 
@@ -52,7 +52,7 @@ const Login = () => {
       <CssBaseline />
       <div className={"container-login"}>
         <div className={"container-img"}>
-          <img alt="Chatizy" src={logo} className="img-login"></img>
+          <ChatizyBrand size="large" />
         </div>
         <div className="container-footer">
           <p>

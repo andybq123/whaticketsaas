@@ -21,6 +21,8 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import LanguageIcon from "@material-ui/icons/Language";
 
 import MainListItems from "./MainListItems";
+import ChatizyBrand from "../components/ChatizyBrand";
+import brandMark from "../assets/chatizy-mark.png";
 import NotificationsPopOver from "../components/NotificationsPopOver";
 import NotificationsVolume from "../components/NotificationsVolume";
 import UserModal from "../components/UserModal";
@@ -38,7 +40,7 @@ import Brightness4Icon from '@material-ui/icons/Brightness4';
 import Brightness7Icon from '@material-ui/icons/Brightness7';
 import usePlans from "../hooks/usePlans";
 
-const drawerWidth = 264;
+const drawerWidth = 248;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -53,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
   },
   toolbar: {
     paddingRight: theme.spacing(2),
-    paddingLeft: theme.spacing(1),
+    paddingLeft: theme.spacing(2),
     minHeight: 56,
     color: theme.palette.dark.main,
     background: theme.palette.barraSuperior,
@@ -77,7 +79,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   logo: {
-    maxHeight: 32,
+    maxHeight: 30,
     width: 'auto',
     cursor: 'pointer',
     [theme.breakpoints.down('sm')]: {
@@ -151,6 +153,7 @@ const useStyles = makeStyles((theme) => ({
       maxWidth: "80vw",
     },
     borderRight: `1px solid ${theme.palette.divider}`,
+    paddingTop: theme.spacing(1),
     backgroundColor: theme.palette.background.paper,
     ...theme.scrollbarStylesSoft
   },
@@ -238,6 +241,8 @@ const useStyles = makeStyles((theme) => ({
     minHeight: 0,
     ...theme.scrollbarStyles,
   },
+  drawerBrand: { padding: theme.spacing(2, 2, 1), display: "flex", justifyContent: "center", borderBottom: `1px solid ${theme.palette.divider}`, marginBottom: theme.spacing(1) },
+  profileName: { fontSize: 13, fontWeight: 600, color: theme.palette.text.primary, maxWidth: 120, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", [theme.breakpoints.down("sm")]: { display: "none" } },
   flagIcon: {
     width: 24,
     height: 16,
@@ -267,8 +272,8 @@ const LoggedInLayout = ({ children }) => {
   const greaterThenSm = useMediaQuery(theme.breakpoints.up("md"));
 
   // Default logos based on theme
-  const defaultLogoLight = `${process.env.REACT_APP_BACKEND_URL}/public/logotipos/interno.png`;
-  const defaultLogoDark = `${process.env.REACT_APP_BACKEND_URL}/public/logotipos/logo_w.png`;
+  const defaultLogoLight = brandMark;
+  const defaultLogoDark = brandMark;
 
   // Potential custom logo base URL (will try .png, .jpg, .svg)
   const customLogoBaseUrl = companyId ? `${process.env.REACT_APP_BACKEND_URL}/public/company${companyId}/logotipos/logo` : null;
@@ -393,7 +398,7 @@ const LoggedInLayout = ({ children }) => {
 
   // Fallback logic for image loading errors
   const handleLogoError = (event) => {
-    const currentSrc = event.target.src.split('?')[0]; // Get URL without cache buster
+    const currentSrc = event.target.getAttribute('src').split('?')[0]; // Get URL without cache buster
     const themeDefaultLogo = theme.palette.type === 'light' ? defaultLogoLight : defaultLogoDark;
 
     // If the current source is already the default, stop to prevent loops
@@ -444,6 +449,7 @@ const LoggedInLayout = ({ children }) => {
           keepMounted: true,
         }}
       >
+        <div className={classes.drawerBrand}><ChatizyBrand size="compact" symbolOnly={!drawerOpen} /></div>
         <div className={classes.containerWithScroll}>
           <List style={{ padding: 0, width: '100%', flex: 1 }}>
             <MainListItems drawerClose={drawerClose} collapsed={!drawerOpen} />
@@ -477,16 +483,16 @@ const LoggedInLayout = ({ children }) => {
           </IconButton>
 
           {/* Logo Display with Fallback */}
-          {finalLogoUrl && (
+          {finalLogoUrl && ( 
             <div className={classes.branding}>
-              <img
+              {finalLogoUrl === brandMark ? <ChatizyBrand size="compact" /> : <img
                 key={finalLogoUrl}
                 src={finalLogoUrl}
                 className={classes.logo}
                 alt="Chatizy"
                 onError={handleLogoError}
                 onClick={() => window.location.href = '/'}
-              />
+              />}
               {companyName && (
                 <Typography className={classes.companyName}>
                   {companyName}
@@ -509,6 +515,8 @@ const LoggedInLayout = ({ children }) => {
           <AnnouncementsPopover />
 
           <ChatPopover />
+          <IconButton aria-label={theme.palette.type === "dark" ? "Modo claro" : "Modo escuro"} title={theme.palette.type === "dark" ? "Modo claro" : "Modo escuro"} onClick={toggleColorMode}>{theme.palette.type === "dark" ? <Brightness7Icon /> : <Brightness4Icon />}</IconButton>
+          <Typography className={classes.profileName}>{user.name}</Typography>
 
           <div>
             <IconButton

@@ -1,7 +1,7 @@
 /* Login-only styles. Never reset global application elements here. */
 .geral {
   width: 100%; min-height: 100vh; display: flex; flex-direction: column;
-  align-items: center; justify-content: center; gap: 24px;
+  align-items: center; justify-content: center; gap: 32px;
   padding: 32px 20px; color: var(--chatizy-text);
   background: var(--chatizy-background);
 }
@@ -10,9 +10,9 @@
 .geral .img-login { width: 200px; max-width: 70vw; height: auto; object-fit: contain; }
 .geral .container-footer { order: 2; padding: 12px; text-align: center; font-size: 12px; line-height: 1.8; color: var(--chatizy-muted); }
 .geral .container-footer a { color: inherit; }
-.geral .container-right { width: 100%; max-width: 440px; }
-.geral .box { background: var(--chatizy-surface); border: 1px solid var(--chatizy-border); border-radius: 8px; padding: 28px; box-shadow: var(--chatizy-shadow); }
-.geral .container-header-box { display: flex; gap: 24px; align-items: center; border-bottom: 1px solid var(--chatizy-border); margin-bottom: 24px; }
+.geral .container-right { width: 100%; max-width: 460px; }
+.geral .box { background: var(--chatizy-surface); border: 1px solid var(--chatizy-border); border-radius: var(--chatizy-radius); padding: 36px; box-shadow: var(--chatizy-shadow); }
+.geral .container-header-box { display: flex; gap: 32px; align-items: center; border-bottom: 1px solid var(--chatizy-border); margin-bottom: 24px; }
 .geral .link-create-count, .geral .link-enter { padding: 0 0 14px; text-decoration: none; font-size: 16px; font-weight: 600; color: var(--chatizy-muted); }
 .geral .link-enter { color: var(--chatizy-text); border-bottom: 3px solid var(--chatizy-brand); margin-bottom: -1px; }
 .geral .container-footer-form { text-align: center; font-size: 12px; line-height: 1.7; color: var(--chatizy-muted); margin-top: 24px; }

@@ -43,15 +43,15 @@ const useStyles = makeStyles(theme => ({
 	drawerPaper: {
 		width: drawerWidth,
 		display: "flex",
-		borderTop: "1px solid rgba(0, 0, 0, 0.12)",
-		borderRight: "1px solid rgba(0, 0, 0, 0.12)",
-		borderBottom: "1px solid rgba(0, 0, 0, 0.12)",
-		borderTopRightRadius: 4,
-		borderBottomRightRadius: 4,
+		borderTop: `1px solid ${theme.palette.divider}`,
+		borderRight: `1px solid ${theme.palette.divider}`,
+		borderBottom: `1px solid ${theme.palette.divider}`,
+		borderTopRightRadius: theme.chatizy.radius,
+		borderBottomRightRadius: theme.chatizy.radius,
 	},
 	header: {
 		display: "flex",
-		borderBottom: "1px solid rgba(0, 0, 0, 0.12)",
+		borderBottom: `1px solid ${theme.palette.divider}`,
 		backgroundColor: theme.palette.contactdrawer, //DARK MODE//
 		alignItems: "center",
 		padding: theme.spacing(0, 1),
@@ -96,8 +96,8 @@ const useStyles = makeStyles(theme => ({
 		padding: 6,
 	},
 	tabsContainer: {
-		backgroundColor: theme.palette.type === 'dark' ? '#202c33' : '#ffffff',
-		borderBottom: `1px solid ${theme.palette.type === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.08)'}`,
+		backgroundColor: theme.palette.background.paper,
+		borderBottom: `1px solid ${theme.palette.divider}`,
 		overflowX: "auto",
 		overflowY: "hidden",
 		...theme.scrollbarStyles,
@@ -113,7 +113,7 @@ const useStyles = makeStyles(theme => ({
 			padding: "12px 16px",
 		},
 		"& .Mui-selected": {
-			color: theme.palette.type === 'dark' ? '#00a884' : '#008069',
+			color: theme.palette.primary.main,
 		},
 		"& .MuiTabs-scrollButtons": {
 			"&.Mui-disabled": {
@@ -123,7 +123,7 @@ const useStyles = makeStyles(theme => ({
 	},
 	tabPanel: {
 		padding: theme.spacing(2),
-		backgroundColor: theme.palette.type === 'dark' ? '#111b21' : '#f0f2f5',
+		backgroundColor: theme.palette.background.default,
 		minHeight: "200px",
 		maxHeight: "300px",
 		overflowY: "auto",
@@ -143,7 +143,7 @@ const useStyles = makeStyles(theme => ({
 		borderRadius: theme.spacing(0.5),
 		overflow: "hidden",
 		cursor: "pointer",
-		backgroundColor: theme.palette.type === 'dark' ? '#202c33' : '#e4e6eb',
+		backgroundColor: theme.palette.action.hover,
 		"&:hover": {
 			opacity: 0.8,
 		},
@@ -162,27 +162,27 @@ const useStyles = makeStyles(theme => ({
 		left: "50%",
 		transform: "translate(-50%, -50%)",
 		fontSize: "24px",
-		color: theme.palette.type === 'dark' ? '#8696a0' : '#667781',
+		color: theme.palette.text.secondary,
 	},
 	linkItem: {
 		padding: theme.spacing(1),
 		marginBottom: theme.spacing(0.5),
-		backgroundColor: theme.palette.type === 'dark' ? '#202c33' : '#ffffff',
+		backgroundColor: theme.palette.background.paper,
 		borderRadius: theme.spacing(0.5),
 		cursor: "pointer",
 		"&:hover": {
-			backgroundColor: theme.palette.type === 'dark' ? '#2a3942' : '#f5f6f6',
+			backgroundColor: theme.palette.action.hover,
 		},
 	},
 	linkUrl: {
 		fontSize: "11px",
-		color: theme.palette.type === 'dark' ? '#008069' : '#008069',
+		color: theme.palette.primary.main,
 		wordBreak: "break-all",
 		marginTop: theme.spacing(0.5),
 	},
 	linkPreview: {
 		fontSize: "12px",
-		color: theme.palette.type === 'dark' ? '#e9edef' : '#111b21',
+		color: theme.palette.text.primary,
 	},
 }));
 

@@ -74,8 +74,8 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(3),
   },
   connectionCard: {
-    borderRadius: 8,
-    boxShadow: theme.shadows[2],
+    borderRadius: theme.chatizy.radius,
+    boxShadow: theme.chatizy.shadow,
     transition: "all 0.3s ease",
     height: "100%",
     display: "flex",
@@ -90,8 +90,8 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(2),
     borderBottom: `1px solid ${theme.palette.divider}`,
     backgroundColor: theme.palette.background.paper,
-    borderTopLeftRadius: 8,
-    borderTopRightRadius: 8,
+    borderTopLeftRadius: theme.chatizy.radius,
+    borderTopRightRadius: theme.chatizy.radius,
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
@@ -116,13 +116,13 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.getContrastText(theme.palette.primary.main),
   },
   connectedStatus: {
-    color: theme.palette.type === 'dark' ? green[400] : green[600],
+    color: theme.palette.success.main,
   },
   disconnectedStatus: {
-    color: theme.palette.type === 'dark' ? red[400] : red[600],
+    color: theme.palette.error.main,
   },
   qrcodeStatus: {
-    color: theme.palette.type === 'dark' ? blue[400] : blue[600],
+    color: theme.palette.info.main,
   },
   timeoutStatus: {
     color: theme.palette.type === 'dark' ? orange[400] : orange[600],
@@ -134,7 +134,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.type === 'dark' ? green[800] : green[100],
     color: theme.palette.type === 'dark' ? green[100] : green[800],
     padding: "2px 8px",
-    borderRadius: 8,
+    borderRadius: theme.chatizy.radius,
     display: "inline-flex",
     alignItems: "center",
     gap: 4,

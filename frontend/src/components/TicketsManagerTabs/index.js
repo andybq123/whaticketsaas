@@ -47,13 +47,15 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     flexDirection: 'column',
     overflow: 'hidden',
-    borderTopRightRadius: 0,
-    borderBottomRightRadius: 0,
+    borderRadius: theme.chatizy.radius,
+    border: `1px solid ${theme.palette.divider}`,
+    boxShadow: "none",
   },
 
   tabsHeader: {
     flex: 'none',
-    backgroundColor: theme.palette.background.default,
+    backgroundColor: theme.palette.background.paper,
+    borderBottom: `1px solid ${theme.palette.divider}`,
   },
 
   settingsIcon: {
@@ -79,8 +81,8 @@ const useStyles = makeStyles((theme) => ({
     flex: 1,
     backgroundColor: theme.palette.background.default,
     display: 'flex',
-    borderRadius: 8,
-    padding: 8,
+    borderRadius: theme.chatizy.controlRadius,
+    padding: 10,
     minWidth: 0,
     border: `1px solid ${theme.palette.divider}`,
     marginRight: theme.spacing(1),

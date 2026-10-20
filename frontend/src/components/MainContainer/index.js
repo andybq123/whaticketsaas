@@ -6,7 +6,7 @@ import Container from "@material-ui/core/Container";
 const useStyles = makeStyles(theme => ({
 	mainContainer: {
 		flex: 1,
-		padding: theme.spacing(3),
+		padding: theme.spacing(3, 4),
 		height: "100%",
         minHeight: 0,
         minWidth: 0,

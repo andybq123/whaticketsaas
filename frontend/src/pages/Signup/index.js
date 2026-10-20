@@ -102,10 +102,10 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     padding: theme.spacing(4),
-    borderRadius: 8,
+    borderRadius: theme.chatizy.controlRadius,
     background: theme.palette.background.paper,
     border: `1px solid ${theme.palette.divider}`,
-    boxShadow: theme.shadows[1],
+    boxShadow: theme.chatizy.shadow,
     position: 'relative',
     overflow: 'hidden',
     '&:before': {
@@ -132,7 +132,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(1.75),
     fontSize: '1rem',
     fontWeight: 600,
-    borderRadius: 8,
+    borderRadius: theme.chatizy.controlRadius,
     background: theme.palette.primary.main,
     color: theme.palette.primary.contrastText,
     textTransform: 'none',
@@ -163,7 +163,7 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
-    borderRadius: 8,
+    borderRadius: theme.chatizy.controlRadius,
     background: theme.palette.background.paper,
     border: '1px solid',
     borderColor: theme.palette.divider,
@@ -236,7 +236,7 @@ const useStyles = makeStyles((theme) => ({
   backButton: {
     marginRight: theme.spacing(1),
     color: theme.palette.text.secondary,
-    borderRadius: 8,
+    borderRadius: theme.chatizy.controlRadius,
     padding: theme.spacing(1, 2),
     '&:hover': {
       backgroundColor: theme.palette.action.hover,
@@ -251,7 +251,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-between',
     padding: theme.spacing(2.5),
     background: theme.palette.action.selected,
-    borderRadius: 8,
+    borderRadius: theme.chatizy.controlRadius,
     marginBottom: theme.spacing(3),
     border: `1px solid ${theme.palette.divider}`,
   },
@@ -268,7 +268,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.getContrastText(theme.palette.warning.main),
     fontWeight: 700,
     padding: theme.spacing(0.5, 2),
-    borderRadius: 8,
+    borderRadius: theme.chatizy.controlRadius,
     fontSize: '0.75rem',
     display: 'flex',
     alignItems: 'center',
@@ -280,7 +280,7 @@ const useStyles = makeStyles((theme) => ({
   },
   inputField: {
     '& .MuiOutlinedInput-root': {
-      borderRadius: 8,
+      borderRadius: theme.chatizy.controlRadius,
       '& fieldset': {
         borderColor: theme.palette.divider,
       },

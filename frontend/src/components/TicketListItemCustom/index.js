@@ -36,10 +36,12 @@ import TransferTicketModal from "../TransferTicketModalCustom";
 const useStyles = makeStyles((theme) => ({
   ticket: {
     position: "relative",
-    margin: "0px",
+    margin: "6px 8px",
+    width: "calc(100% - 16px)",
     padding: "12px 60px 12px 28px",
-    borderRadius: "0px",
-    borderBottom: `1px solid ${theme.palette.divider}`,
+    borderRadius: theme.chatizy.controlRadius,
+    border: `1px solid ${theme.palette.divider}`,
+    overflow: "hidden",
     transition: "all 0.2s ease",
     backgroundColor: theme.palette.background.paper,
     "&:hover": {
@@ -61,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     top: 0,
     left: 0,
-    borderRadius: "0px",
+    borderRadius: theme.chatizy.controlRadius,
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -100,12 +102,12 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 600,
   },
   avatar: {
-    width: "55px",
-    height: "55px",
+    width: "44px",
+    height: "44px",
     marginRight: "10px",
     position: "relative",
     "& .MuiAvatar-root": {
-      borderRadius: "8px",
+      borderRadius: "50%",
     },
   },
   avatarBadge: {
@@ -155,16 +157,16 @@ const useStyles = makeStyles((theme) => ({
     whiteSpace: "nowrap",
   },
   statusBadgePending: {
-    backgroundColor: "#ffc107",
-    color: "#000",
+    backgroundColor: theme.palette.status.pending,
+    color: theme.palette.warning.main,
   },
   statusBadgeOpen: {
-    backgroundColor: "#28a745",
-    color: "#fff",
+    backgroundColor: theme.palette.status.open,
+    color: theme.palette.success.main,
   },
   statusBadgeClosed: {
-    backgroundColor: "#dc3545",
-    color: "#fff",
+    backgroundColor: theme.palette.status.closed,
+    color: theme.palette.error.main,
   },
   whatsappIcon: {
     fontSize: "14px",
@@ -182,7 +184,7 @@ const useStyles = makeStyles((theme) => ({
   unreadBadge: {
     "& .MuiBadge-badge": {
       backgroundColor: theme.palette.primary.main,
-      color: theme.palette.primary.contrastText || "white",
+      color: theme.palette.primary.contrastText,
       fontWeight: "bold",
       fontSize: "0.65rem",
     },
@@ -652,7 +654,7 @@ const TicketListItemCustom = ({ ticket }) => {
               style={{ 
                 width: "100%",
                 height: "100%",
-                borderRadius: "8px",
+                borderRadius: "50%",
                 backgroundColor: generateColor(ticket?.contact?.number) 
               }}
             >

@@ -40,10 +40,10 @@ const useStyles = makeStyles(theme => ({
       minHeight: "60vh",
     },
     "& .react-trello-lane": {
-      backgroundColor: theme.palette.background.paper,
+      backgroundColor: theme.palette.action.hover,
       color: theme.palette.text.primary,
-      borderRadius: "8px",
-      boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+      borderRadius: theme.chatizy.radius,
+      boxShadow: "none",
       margin: "0 8px",
       [theme.breakpoints.down('sm')]: {
         margin: "8px 0",
@@ -51,13 +51,15 @@ const useStyles = makeStyles(theme => ({
       }
     },
     "& .react-trello-card": {
-      borderRadius: "6px",
+      backgroundColor: theme.palette.background.paper,
+      border: `1px solid ${theme.palette.divider}`,
+      borderRadius: theme.chatizy.controlRadius,
       marginBottom: "8px",
-      boxShadow: "0 1px 3px rgba(0,0,0,0.1)",
+      boxShadow: theme.chatizy.shadow,
       transition: "all 0.2s ease",
       "&:hover": {
         transform: "translateY(-2px)",
-        boxShadow: "0 4px 8px rgba(0,0,0,0.15)",
+        boxShadow: theme.chatizy.shadow,
       }
     },
     "& .react-trello-card-draggable": {

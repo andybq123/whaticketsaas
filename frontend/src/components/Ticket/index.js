@@ -27,6 +27,8 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     height: "100%",
     position: "relative",
+    borderRadius: theme.chatizy.radius,
+    backgroundColor: theme.palette.background.paper,
     overflow: "hidden",
   },
 
@@ -36,9 +38,9 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     overflow: "hidden",
-    borderTopLeftRadius: 0,
-    borderBottomLeftRadius: 0,
-    borderLeft: "0",
+    borderRadius: theme.chatizy.radius,
+    minWidth: 0,
+    border: `1px solid ${theme.palette.divider}`,
     marginRight: -drawerWidth,
     transition: theme.transitions.create("margin", {
       easing: theme.transitions.easing.sharp,
@@ -203,7 +205,7 @@ const Ticket = () => {
           {renderTicketInfo()}
           <TicketActionButtons ticket={ticket} onSearchToggle={handleSearchToggle} />
         </TicketHeader>
-        <Paper>
+        <Paper square elevation={0}>
           <TagsContainer ticket={ticket} />
         </Paper>
         <MessageSearch

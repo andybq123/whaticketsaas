@@ -35,6 +35,7 @@ import { grey, blue } from "@material-ui/core/colors";
 import { toast } from "react-toastify";
 
 import Chart from "./Chart";
+import ChatizyBrand from "../../components/ChatizyBrand";
 import ButtonWithSpinner from "../../components/ButtonWithSpinner";
 import CardCounter from "../../components/Dashboard/CardCounter";
 import TableAttendantsStatus from "../../components/Dashboard/TableAttendantsStatus";
@@ -63,8 +64,10 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(4),
   },
+  heading: { display: "flex", justifyContent: "space-between", alignItems: "center", gap: theme.spacing(2), marginBottom: theme.spacing(3), flexWrap: "wrap" },
+  pageTitle: { fontSize: 28, fontWeight: 700, color: theme.palette.text.primary },
   card: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(3),
     display: "flex",
     flexDirection: "column",
     height: "100%",
@@ -78,6 +81,9 @@ const useStyles = makeStyles((theme) => ({
     background: theme.palette.background.paper,
     border: `1px solid ${theme.palette.divider}`,
     color: theme.palette.text.primary,
+    "&.chatizy-success $cardIcon": { color: theme.palette.success.main, backgroundColor: theme.palette.success.soft },
+    "&.chatizy-warning $cardIcon": { color: theme.palette.warning.main, backgroundColor: theme.palette.warning.soft },
+    "&.chatizy-info $cardIcon": { color: theme.palette.info.main, backgroundColor: theme.palette.info.soft },
   },
   cardContent: {
     display: "flex",
@@ -99,11 +105,11 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: 1.2,
   },
   cardIcon: {
-    fontSize: "2.5rem",
+    fontSize: "1.75rem",
     marginLeft: theme.spacing(2),
     color: theme.palette.primary.main,
     padding: theme.spacing(1),
-    borderRadius: 8,
+    borderRadius: theme.chatizy.controlRadius,
     backgroundColor: theme.palette.action.selected,
     boxSizing: "content-box",
   },
@@ -261,14 +267,15 @@ const Dashboard = () => {
   }
 
   return (
-    <Container maxWidth="lg" className={classes.container}>
+    <Container maxWidth={false} className={classes.container}>
+      <div className={classes.heading}><Typography component="h1" className={classes.pageTitle}>{i18n.t("mainDrawer.listItems.dashboard")}</Typography><ChatizyBrand size="compact" /></div>
       <Grid container spacing={3}>
         {/* Cards Section */}
         <Grid container item xs={12} spacing={3}>
           {/* Conexões Ativas */}
           {user.super && (
             <Grid item xs={12} sm={6} md={4} lg={3}>
-              <Paper className={classes.card}>
+              <Paper className={`${classes.card} chatizy-info`}>
                 <div className={classes.cardContent}>
                   <div className={classes.cardText}>
                     <Typography variant="subtitle2" className={classes.cardTitle}>
@@ -305,7 +312,7 @@ const Dashboard = () => {
 
           {/* Em Conversa */}
           <Grid item xs={12} sm={6} md={4} lg={3}>
-            <Paper className={classes.card}>
+            <Paper className={`${classes.card} chatizy-success`}>
               <div className={classes.cardContent}>
                 <div className={classes.cardText}>
                   <Typography variant="subtitle2" className={classes.cardTitle}>
@@ -322,7 +329,7 @@ const Dashboard = () => {
 
           {/* Aguardando */}
           <Grid item xs={12} sm={6} md={4} lg={3}>
-            <Paper className={classes.card}>
+            <Paper className={`${classes.card} chatizy-warning`}>
               <div className={classes.cardContent}>
                 <div className={classes.cardText}>
                   <Typography variant="subtitle2" className={classes.cardTitle}>
@@ -339,7 +346,7 @@ const Dashboard = () => {
 
           {/* Novos Contatos */}
           <Grid item xs={12} sm={6} md={4} lg={3}>
-            <Paper className={classes.card}>
+            <Paper className={`${classes.card} chatizy-info`}>
               <div className={classes.cardContent}>
                 <div className={classes.cardText}>
                   <Typography variant="subtitle2" className={classes.cardTitle}>
@@ -373,7 +380,7 @@ const Dashboard = () => {
 
           {/* Finalizados */}
           <Grid item xs={12} sm={6} md={4} lg={3}>
-            <Paper className={classes.card}>
+            <Paper className={`${classes.card} chatizy-success`}>
               <div className={classes.cardContent}>
                 <div className={classes.cardText}>
                   <Typography variant="subtitle2" className={classes.cardTitle}>
@@ -390,7 +397,7 @@ const Dashboard = () => {
 
           {/* T.M. de Espera */}
           <Grid item xs={12} sm={6} md={4} lg={3}>
-            <Paper className={classes.card}>
+            <Paper className={`${classes.card} chatizy-warning`}>
               <div className={classes.cardContent}>
                 <div className={classes.cardText}>
                   <Typography variant="subtitle2" className={classes.cardTitle}>
@@ -436,7 +443,7 @@ const Dashboard = () => {
                   disabled={loading}
                   size="large"
                 >
-                  {i18n.t("dashboard.filters.filter")}
+                  <FilterListIcon fontSize="small" style={{ marginRight: 8 }} />{i18n.t("dashboard.filters.filter")}
                 </Button>
               </Grid>
             </Grid>
