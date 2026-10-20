@@ -35,60 +35,68 @@ const ImportContactsService = async (
 
   const wbot = getWbot(whatsapp.id);
 
-  const baileys = await ShowBaileysService(wbot.id);
+  let baileys;
+  try {
+    baileys = await ShowBaileysService(wbot.id);
+  } catch (error) {
+    throw new AppError(
+      "Nenhum contato sincronizado ainda. Aguarde alguns minutos após conectar ou reconecte o WhatsApp lendo o QR Code.",
+      404
+    );
+  }
 
   let phoneContactsList: any[] = [];
 
   try {
     const parsed = baileys.contacts && JSON.parse(baileys.contacts as any);
-
-    // Normaliza o formato vindo do Baileys para sempre ter um array de contatos,
-    // independente se vem como array, objeto ou aninhado em "contacts".
     if (Array.isArray(parsed)) {
       phoneContactsList = parsed;
     } else if (parsed && typeof parsed === "object") {
-      if (Array.isArray((parsed as any).contacts)) {
-        phoneContactsList = (parsed as any).contacts;
-      } else {
-        phoneContactsList = Object.values(parsed as any);
-      }
+      phoneContactsList = Array.isArray((parsed as any).contacts)
+        ? (parsed as any).contacts
+        : Object.values(parsed as any);
     }
   } catch (error) {
-    logger.warn(
-      { baileys },
-      `Could not get whatsapp contacts from database. Err: ${error}`
-    );
+    logger.warn({ whatsappId: whatsapp.id }, `Could not parse whatsapp contacts. Err: ${error}`);
     throw new AppError("Could not get whatsapp contacts from database.", 500);
   }
 
-  if (Array.isArray(phoneContactsList) && phoneContactsList.length) {
-    for (const { id, name, notify } of phoneContactsList) {
-      if (id === "status@broadcast" || id.includes("g.us")) continue;
+  // Resolve o número real: contatos novos podem vir com id @lid (identificador anônimo),
+  // que não é telefone. Nesse caso usa o campo jid (@s.whatsapp.net) quando disponível.
+  const resolvePhoneJid = (c: any): string | null => {
+    const candidates = [c?.jid, c?.phoneNumber, c?.id].filter(
+      (v: any) => typeof v === "string"
+    );
+    const jid = candidates.find((v: string) => v.endsWith("@s.whatsapp.net"));
+    return jid || null;
+  };
 
-      // Suporta números de qualquer país (até 15 dígitos conforme padrão internacional)
-      const number = id.replace(/\D/g, "").slice(0, 15);
+  const seen = new Set<string>();
 
-      const existingContact = await Contact.findOne({
-        where: { number, companyId }
-      });
+  for (const contact of phoneContactsList) {
+    const jid = resolvePhoneJid(contact);
+    if (!jid) continue;
+
+    const number = jid.split("@")[0].split(":")[0].replace(/\D/g, "");
+    if (number.length < 8 || number.length > 15 || seen.has(number)) continue;
+    seen.add(number);
+
+    const name = contact.name || contact.notify || contact.verifiedName || number;
+
+    try {
+      const existingContact = await Contact.findOne({ where: { number, companyId } });
 
       if (existingContact) {
-        existingContact.name = name || notify || number;
-        await existingContact.save();
-      } else {
-        try {
-          await CreateContactService({
-            number,
-            name: name || notify || number,
-            companyId
-          });
-        } catch (error) {
-          logger.error(
-            { name, number, companyId },
-            `Could not save contact. Err: ${error}`
-          );
+        // Só substitui o nome quando o atual é apenas o número.
+        if (!existingContact.name || existingContact.name === number) {
+          existingContact.name = name;
+          await existingContact.save();
         }
+      } else {
+        await CreateContactService({ number, name, companyId });
       }
+    } catch (error) {
+      logger.error({ number, companyId }, `Could not save contact. Err: ${error}`);
     }
   }
 };
